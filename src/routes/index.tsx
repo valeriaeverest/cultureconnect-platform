@@ -63,6 +63,7 @@ export const Route = createFileRoute("/")({
 
 const LOCATIONS = [
   "Austin, TX (HQ)",
+  "Portland, OR",
   "San Francisco, CA",
   "Seattle, WA",
   "Remote/Virtual Hub",
