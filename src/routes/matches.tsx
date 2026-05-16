@@ -30,18 +30,20 @@ type Match = {
   why: string;
   meta: string;
   coords: [number, number];
+  image: string;
 };
 
 const MATCHES: Match[] = [
   {
     id: 1,
-    category: "WORKSHOP",
-    title: "Private Maker Workshop",
-    vendor: "Crafty Wonderland Makers Workshop",
-    home: "Downtown & Alberta Arts District, Portland",
-    why: "A local maker leads your team through a hands-on workshop — ceramics, jewelry, or screen printing. Everyone goes home with what they made.",
-    meta: "$95/person • 2.5 hrs • 10-40 people • 2.1 mi away",
+    category: "BREWERY",
+    title: "Breakside Brewery — Brewery Buyout",
+    vendor: "Breakside Brewery",
+    home: "Industrial District, Portland",
+    why: "An evening corporate celebration in a modern industrial craft brewery — high ceilings, exposed brewing tanks behind glass, long wooden communal tables under Edison bulb string lights. Warm amber and forest green tones, intimate and sophisticated.",
+    meta: "$95/person • 3 hrs • 30-80 people • 2.4 mi away",
     coords: [45.5535, -122.6750],
+    image: breweryImg,
   },
   {
     id: 2,
@@ -52,6 +54,7 @@ const MATCHES: Match[] = [
     why: "Perfect for teams wanting a soulful moment, not a party. Quiet folk that creates the kind of atmosphere where people actually talk to each other afterward.",
     meta: "$95/person • 75 min • 20-80 people • 4.8 mi away",
     coords: [45.5050, -122.6500],
+    image: hayleyImg,
   },
   {
     id: 3,
@@ -62,6 +65,7 @@ const MATCHES: Match[] = [
     why: "Sweet and savory crepes made to order. A delightful, slightly unexpected option for morning team gatherings, brunches, or wellness-themed events.",
     meta: "$22/person • 2 hrs • 20-100 people • 1.3 mi away",
     coords: [45.5200, -122.6900],
+    image: crepeImg,
   },
 ];
 
