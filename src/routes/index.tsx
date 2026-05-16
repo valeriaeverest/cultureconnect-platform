@@ -295,7 +295,7 @@ function Footer() {
 
 function LandingPage() {
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col page-fade">
       <Nav />
       <main className="flex-1">
         <section className="px-6 pt-20 pb-16 text-center">

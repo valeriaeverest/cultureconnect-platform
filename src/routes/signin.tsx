@@ -188,7 +188,7 @@ function SignInPage() {
   }, [tab]);
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col page-fade">
       <Nav />
       <main className="flex-1 flex items-start justify-center px-6 py-16">
         <div
