@@ -31,6 +31,12 @@ function Nav() {
             Case studies
           </Link>
           <Link
+            to="/pricing"
+            className="text-sm text-secondary hover:text-foreground transition-colors"
+          >
+            Pricing
+          </Link>
+          <Link
             to="/vendor-apply"
             className="text-sm text-secondary hover:text-foreground transition-colors"
           >
