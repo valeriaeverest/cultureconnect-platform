@@ -299,6 +299,9 @@ function LandingPage() {
       <Nav />
       <main className="flex-1">
         <section className="px-6 pt-20 pb-16 text-center">
+          <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
+            Stop wasting budget on uninspired happy hours. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
+          </p>
           <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
             Build culture, not hangovers.
           </h1>
