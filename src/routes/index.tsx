@@ -1,4 +1,34 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import crepeImg from "@/assets/crepe.png";
+import hayleyImg from "@/assets/hayley.png";
+
+const HERO_GALLERY = [crepeImg, hayleyImg];
+
+function HeroGallery() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((n) => (n + 1) % HERO_GALLERY.length), 4500);
+    return () => clearInterval(id);
+  }, []);
+  return (
+    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
+      {HERO_GALLERY.map((src, idx) => (
+        <img
+          key={src}
+          src={src}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover ease-in-out"
+          style={{
+            opacity: idx === i ? 1 : 0,
+            transform: idx === i ? "scale(1.06)" : "scale(1)",
+            transition: "opacity 1400ms ease-in-out, transform 6000ms ease-out",
+          }}
+        />
+      ))}
+      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
+    </div>
+  );
+}
 import { useEffect, useState } from "react";
 import {
   defaultIntake,
