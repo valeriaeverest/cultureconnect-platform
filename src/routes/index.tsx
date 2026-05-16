@@ -64,7 +64,7 @@ function PhotoGallery() {
           </div>
         </div>
 
-        <div className="mt-6 flex items-center justify-center gap-3">
+        <div className="mt-6 flex items-center justify-center gap-2">
           {GALLERY_PHOTOS.map((_, idx) => {
             const active = idx === i;
             return (
@@ -73,13 +73,17 @@ function PhotoGallery() {
                 type="button"
                 aria-label={`Show photo ${idx + 1}`}
                 onClick={() => setI(idx)}
-                className="rounded-full transition-all"
-                style={{
-                  width: active ? 28 : 10,
-                  height: 10,
-                  backgroundColor: active ? "var(--color-primary)" : "var(--color-border)",
-                }}
-              />
+                className="group cursor-pointer p-2 bg-transparent border-0"
+              >
+                <span
+                  className="block rounded-full transition-all"
+                  style={{
+                    width: active ? 28 : 10,
+                    height: 10,
+                    backgroundColor: active ? "var(--color-primary)" : "#cbd5e1",
+                  }}
+                />
+              </button>
             );
           })}
         </div>
