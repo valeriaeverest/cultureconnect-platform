@@ -125,6 +125,118 @@ const BENCHMARKS = [
   { metric: "Response rate", you: "93%", prev: "67%", industry: "58%" },
 ];
 
+const NPS_HISTORY = [
+  { date: "Sep '24", you: 38, industry: 40 },
+  { date: "Dec '24", you: 45, industry: 41 },
+  { date: "Mar '25", you: 51, industry: 41 },
+  { date: "Jun '25", you: 49, industry: 42 },
+  { date: "Sep '25", you: 56, industry: 41 },
+  { date: "Dec '25", you: 54, industry: 42 },
+  { date: "Mar '26", you: 72, industry: 41 },
+];
+
+function NpsHistoryChart() {
+  const W = 760;
+  const H = 280;
+  const PAD = { top: 24, right: 24, bottom: 36, left: 36 };
+  const innerW = W - PAD.left - PAD.right;
+  const innerH = H - PAD.top - PAD.bottom;
+  const yMax = 100;
+  const xFor = (i: number) => PAD.left + (i * innerW) / (NPS_HISTORY.length - 1);
+  const yFor = (v: number) => PAD.top + innerH - (v / yMax) * innerH;
+  const yTicks = [0, 25, 50, 75, 100];
+  const youPath = NPS_HISTORY.map((d, i) => `${i === 0 ? "M" : "L"}${xFor(i)},${yFor(d.you)}`).join(" ");
+  const industryPath = NPS_HISTORY.map((d, i) => `${i === 0 ? "M" : "L"}${xFor(i)},${yFor(d.industry)}`).join(" ");
+  const last = NPS_HISTORY.length - 1;
+  const lastX = xFor(last);
+  const lastY = yFor(NPS_HISTORY[last].you);
+
+  return (
+    <div className="rounded-lg border bg-card p-6 shadow-sm">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h3 className="text-base font-semibold text-foreground">Event NPS over time</h3>
+          <p className="mt-1 text-sm text-secondary">
+            Your team's NPS across the last 7 culture events vs. the industry benchmark.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-4 text-xs">
+          <span className="flex items-center gap-2 text-secondary">
+            <span className="inline-block h-2.5 w-4 rounded-sm" style={{ background: "var(--color-primary)" }} />
+            Your events
+          </span>
+          <span className="flex items-center gap-2 text-secondary">
+            <span className="inline-block h-0.5 w-4" style={{ background: "#94a3b8" }} />
+            Industry benchmark
+          </span>
+          <span className="flex items-center gap-2 text-secondary">
+            <span className="inline-block h-2.5 w-2.5 rounded-full" style={{ background: "var(--success)" }} />
+            This event
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-5 w-full overflow-x-auto">
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ minWidth: 520 }}>
+          {yTicks.map((t) => (
+            <g key={t}>
+              <line x1={PAD.left} x2={W - PAD.right} y1={yFor(t)} y2={yFor(t)} stroke="#e2e8f0" strokeWidth={1} />
+              <text x={PAD.left - 8} y={yFor(t) + 4} textAnchor="end" fill="#94a3b8" style={{ fontSize: 11 }}>
+                {t}
+              </text>
+            </g>
+          ))}
+          {NPS_HISTORY.map((d, i) => (
+            <text key={d.date} x={xFor(i)} y={H - PAD.bottom + 18} textAnchor="middle" fill="#94a3b8" style={{ fontSize: 11 }}>
+              {d.date}
+            </text>
+          ))}
+          <path d={industryPath} fill="none" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="4 4" />
+          <path d={youPath} fill="none" stroke="var(--color-primary)" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+          {NPS_HISTORY.map((d, i) => (
+            <circle
+              key={i}
+              cx={xFor(i)}
+              cy={yFor(d.you)}
+              r={i === last ? 6 : 3.5}
+              fill={i === last ? "var(--success)" : "var(--color-primary)"}
+              stroke="#fff"
+              strokeWidth={i === last ? 2 : 1}
+            />
+          ))}
+          <g transform={`translate(${lastX - 68}, ${lastY - 32})`}>
+            <rect width={60} height={22} rx={4} fill="var(--success)" />
+            <text x={30} y={15} textAnchor="middle" fill="#fff" style={{ fontSize: 11, fontWeight: 600 }}>
+              NPS 72
+            </text>
+          </g>
+        </svg>
+      </div>
+
+      <div className="mt-4 grid grid-cols-2 gap-4 border-t pt-4 text-xs sm:grid-cols-4">
+        <div>
+          <div className="text-muted-foreground">This event</div>
+          <div className="mt-0.5 font-semibold tabular-nums text-foreground">72</div>
+        </div>
+        <div>
+          <div className="text-muted-foreground">Prev. 6-event avg</div>
+          <div className="mt-0.5 font-semibold tabular-nums text-foreground">49</div>
+        </div>
+        <div>
+          <div className="text-muted-foreground">Best previous</div>
+          <div className="mt-0.5 font-semibold tabular-nums text-foreground">56</div>
+        </div>
+        <div>
+          <div className="text-muted-foreground">vs. industry</div>
+          <div className="mt-0.5 font-semibold tabular-nums" style={{ color: "var(--success)" }}>
+            +31
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function MetricCard({ m }: { m: (typeof METRICS)[number] }) {
   const { prefix, num, suffix, decimals } = parseMetric(m.value);
   const current = useCountUp(num, 400, decimals);
@@ -276,6 +388,11 @@ function ImpactPage() {
               </tbody>
             </table>
           </div>
+        </section>
+
+        {/* Historical NPS chart */}
+        <section className="mt-16">
+          <NpsHistoryChart />
         </section>
 
         {/* CTAs */}
