@@ -32,6 +32,61 @@ function HeroGallery() {
     </div>
   );
 }
+
+const GALLERY_PHOTOS: { src: string; caption: string }[] = [
+  { src: breweryImg, caption: "Brewery buyouts that turn quarterly all-hands into a community celebration." },
+  { src: hayleyImg, caption: "Intimate acoustic sets where teams actually talk to each other afterward." },
+  { src: crepeImg, caption: "Pop-up culinary moments from neighborhood artisans, made to order." },
+];
+
+function PhotoGallery() {
+  const [i, setI] = useState(0);
+  return (
+    <section className="px-6 py-16 bg-background">
+      <div className="max-w-5xl mx-auto">
+        <div
+          className="relative w-full aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-muted"
+          style={{ boxShadow: "0 2px 6px rgba(15,23,42,0.06), 0 20px 48px rgba(15,23,42,0.1)" }}
+        >
+          {GALLERY_PHOTOS.map((p, idx) => (
+            <img
+              key={p.src}
+              src={p.src}
+              alt={p.caption}
+              className="absolute inset-0 w-full h-full object-cover"
+              style={{ opacity: idx === i ? 1 : 0, transition: "opacity 600ms ease-in-out" }}
+            />
+          ))}
+          <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
+            <p className="text-white text-sm sm:text-base max-w-2xl leading-snug">
+              {GALLERY_PHOTOS[i].caption}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6 flex items-center justify-center gap-3">
+          {GALLERY_PHOTOS.map((_, idx) => {
+            const active = idx === i;
+            return (
+              <button
+                key={idx}
+                type="button"
+                aria-label={`Show photo ${idx + 1}`}
+                onClick={() => setI(idx)}
+                className="rounded-full transition-all"
+                style={{
+                  width: active ? 28 : 10,
+                  height: 10,
+                  backgroundColor: active ? "var(--color-primary)" : "var(--color-border)",
+                }}
+              />
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+}
 import { useEffect, useState } from "react";
 import {
   defaultIntake,
@@ -483,6 +538,8 @@ function LandingPage() {
             </div>
           </div>
         </section>
+
+        <PhotoGallery />
 
         <Features />
         <Testimonials />
