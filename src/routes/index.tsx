@@ -284,8 +284,8 @@ function Features() {
       body: "Every artist on Lattice is personally vetted.",
     },
     {
-      title: "Automated end-to-end booking",
-      body: "Contracts, payments, and logistics — all on platform.",
+      title: "Personalized dashboard",
+      body: "Measurable impact via employee surveys to reflect retention goals.",
     },
   ];
   return (
