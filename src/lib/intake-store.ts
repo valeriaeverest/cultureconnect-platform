@@ -33,3 +33,16 @@ export function saveIntake(state: IntakeState) {
   if (typeof window === "undefined") return;
   window.localStorage.setItem(KEY, JSON.stringify(state));
 }
+
+const MATCH_KEY = "lattice:selected-match";
+
+export function saveSelectedMatch(id: number) {
+  if (typeof window === "undefined") return;
+  window.localStorage.setItem(MATCH_KEY, String(id));
+}
+
+export function loadSelectedMatch(): number | null {
+  if (typeof window === "undefined") return null;
+  const raw = window.localStorage.getItem(MATCH_KEY);
+  return raw ? Number(raw) : null;
+}
