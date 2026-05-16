@@ -383,6 +383,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "Marcus Vance",
     role: "VP of People & Culture, Apex Analytics (500+ employees)",
     tag: "The Culture Champion",
+    image: ct1,
   },
   {
     quote:
@@ -390,6 +391,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "Elena Rostova",
     role: "Co-Founder & COO, Voxel Creative (80 employees)",
     tag: "The Retention Win",
+    image: ct2,
   },
   {
     quote:
@@ -397,6 +399,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "David Chen",
     role: "Head of Employee Experience, Meridian FinTech (1,200 employees)",
     tag: "The Local Impact Driver",
+    image: ct3,
   },
   {
     quote:
@@ -404,6 +407,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "Sarah Jenkins",
     role: "Director of Operations, Shift Logistics (250 employees)",
     tag: "The Productivity Booster",
+    image: ct4,
   },
   {
     quote:
@@ -411,6 +415,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "Amara Okafor",
     role: "Talent Acquisition Lead, Nebula Health (150 employees)",
     tag: "The Fast-Growing Scale-Up",
+    image: ct5,
   },
 ];
 
