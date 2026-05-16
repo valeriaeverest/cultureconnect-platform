@@ -8,6 +8,9 @@ import ct2 from "@/assets/ct2.jpg";
 import ct3 from "@/assets/ct3.jpg";
 import ct4 from "@/assets/ct4.jpg";
 import ct5 from "@/assets/ct5.jpg";
+import gallery1 from "@/assets/gallery-1.png";
+import gallery2 from "@/assets/gallery-2.png";
+import gallery3 from "@/assets/gallery-3.png";
 
 const HERO_GALLERY = [breweryImg, crepeImg, hayleyImg];
 
@@ -39,9 +42,9 @@ function HeroGallery() {
 }
 
 const GALLERY_PHOTOS: { src: string; caption: string }[] = [
-  { src: breweryImg, caption: "Brewery buyouts that turn quarterly all-hands into a community celebration." },
-  { src: hayleyImg, caption: "Intimate acoustic sets where teams actually talk to each other afterward." },
-  { src: crepeImg, caption: "Pop-up culinary moments from neighborhood artisans, made to order." },
+  { src: gallery1, caption: "Curated local experiences mapped to your team's neighborhood." },
+  { src: gallery2, caption: "Event NPS climbing well above industry benchmarks, event after event." },
+  { src: gallery3, caption: "Perfect matches surfaced for your team — vetted artists, venues, and vendors." },
 ];
 
 function PhotoGallery() {
