@@ -1,3 +1,4 @@
+import { BrandMark } from "@/components/brand-mark";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import crepeImg from "@/assets/crepe.png";
 import hayleyImg from "@/assets/hayley.png";
