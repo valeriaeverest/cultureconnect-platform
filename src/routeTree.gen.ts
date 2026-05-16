@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as MatchesRouteImport } from './routes/matches'
 import { Route as IntakeRouteImport } from './routes/intake'
+import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as CreateAccountRouteImport } from './routes/create-account'
 import { Route as ConfirmedRouteImport } from './routes/confirmed'
 import { Route as BookRouteImport } from './routes/book'
@@ -30,6 +31,11 @@ const MatchesRoute = MatchesRouteImport.update({
 const IntakeRoute = IntakeRouteImport.update({
   id: '/intake',
   path: '/intake',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ImpactRoute = ImpactRouteImport.update({
+  id: '/impact',
+  path: '/impact',
   getParentRoute: () => rootRouteImport,
 } as any)
 const CreateAccountRoute = CreateAccountRouteImport.update({
@@ -58,6 +64,7 @@ export interface FileRoutesByFullPath {
   '/book': typeof BookRoute
   '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
+  '/impact': typeof ImpactRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
@@ -67,6 +74,7 @@ export interface FileRoutesByTo {
   '/book': typeof BookRoute
   '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
+  '/impact': typeof ImpactRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
@@ -77,6 +85,7 @@ export interface FileRoutesById {
   '/book': typeof BookRoute
   '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
+  '/impact': typeof ImpactRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
@@ -88,6 +97,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/confirmed'
     | '/create-account'
+    | '/impact'
     | '/intake'
     | '/matches'
     | '/signin'
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/confirmed'
     | '/create-account'
+    | '/impact'
     | '/intake'
     | '/matches'
     | '/signin'
@@ -106,6 +117,7 @@ export interface FileRouteTypes {
     | '/book'
     | '/confirmed'
     | '/create-account'
+    | '/impact'
     | '/intake'
     | '/matches'
     | '/signin'
@@ -116,6 +128,7 @@ export interface RootRouteChildren {
   BookRoute: typeof BookRoute
   ConfirmedRoute: typeof ConfirmedRoute
   CreateAccountRoute: typeof CreateAccountRoute
+  ImpactRoute: typeof ImpactRoute
   IntakeRoute: typeof IntakeRoute
   MatchesRoute: typeof MatchesRoute
   SigninRoute: typeof SigninRoute
@@ -142,6 +155,13 @@ declare module '@tanstack/react-router' {
       path: '/intake'
       fullPath: '/intake'
       preLoaderRoute: typeof IntakeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/impact': {
+      id: '/impact'
+      path: '/impact'
+      fullPath: '/impact'
+      preLoaderRoute: typeof ImpactRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/create-account': {
@@ -180,6 +200,7 @@ const rootRouteChildren: RootRouteChildren = {
   BookRoute: BookRoute,
   ConfirmedRoute: ConfirmedRoute,
   CreateAccountRoute: CreateAccountRoute,
+  ImpactRoute: ImpactRoute,
   IntakeRoute: IntakeRoute,
   MatchesRoute: MatchesRoute,
   SigninRoute: SigninRoute,
