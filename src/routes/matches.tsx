@@ -112,7 +112,7 @@ function MatchCard({ match }: { match: Match }) {
   const navigate = useNavigate();
   const handleBook = () => {
     saveSelectedMatch(match.id);
-    navigate({ to: "/matches" }); // /book doesn't exist yet
+    navigate({ to: "/book" });
   };
   return (
     <div className="relative rounded-lg border bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
