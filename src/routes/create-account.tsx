@@ -60,7 +60,7 @@ function CreateAccountPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background page-fade">
       <Nav />
       <main className="mx-auto flex max-w-7xl items-start justify-center px-6 py-16">
         <div className="w-full max-w-[480px] rounded-lg border bg-card p-8 shadow-sm">
