@@ -10,12 +10,18 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SigninRouteImport } from './routes/signin'
+import { Route as MatchesRouteImport } from './routes/matches'
 import { Route as IntakeRouteImport } from './routes/intake'
 import { Route as IndexRouteImport } from './routes/index'
 
 const SigninRoute = SigninRouteImport.update({
   id: '/signin',
   path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MatchesRoute = MatchesRouteImport.update({
+  id: '/matches',
+  path: '/matches',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IntakeRoute = IntakeRouteImport.update({
@@ -32,30 +38,34 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/intake': typeof IntakeRoute
+  '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/intake': typeof IntakeRoute
+  '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/intake': typeof IntakeRoute
+  '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/intake' | '/signin'
+  fullPaths: '/' | '/intake' | '/matches' | '/signin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/intake' | '/signin'
-  id: '__root__' | '/' | '/intake' | '/signin'
+  to: '/' | '/intake' | '/matches' | '/signin'
+  id: '__root__' | '/' | '/intake' | '/matches' | '/signin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   IntakeRoute: typeof IntakeRoute
+  MatchesRoute: typeof MatchesRoute
   SigninRoute: typeof SigninRoute
 }
 
@@ -66,6 +76,13 @@ declare module '@tanstack/react-router' {
       path: '/signin'
       fullPath: '/signin'
       preLoaderRoute: typeof SigninRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/matches': {
+      id: '/matches'
+      path: '/matches'
+      fullPath: '/matches'
+      preLoaderRoute: typeof MatchesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/intake': {
@@ -88,6 +105,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   IntakeRoute: IntakeRoute,
+  MatchesRoute: MatchesRoute,
   SigninRoute: SigninRoute,
 }
 export const routeTree = rootRouteImport
