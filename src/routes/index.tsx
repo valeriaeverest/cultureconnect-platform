@@ -3,9 +3,8 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import crepeImg from "@/assets/crepe.png";
 import hayleyImg from "@/assets/hayley.png";
 import breweryImg from "@/assets/brewery.png";
-import concertImg from "@/assets/concert.png";
 
-const HERO_GALLERY = [concertImg, breweryImg, crepeImg, hayleyImg];
+const HERO_GALLERY = [breweryImg, crepeImg, hayleyImg];
 
 function HeroGallery() {
   const [i, setI] = useState(0);
