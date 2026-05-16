@@ -6,26 +6,17 @@ import hayleyImg from "@/assets/hayley.png";
 const HERO_GALLERY = [crepeImg, hayleyImg];
 
 function HeroGallery() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setI((n) => (n + 1) % HERO_GALLERY.length), 4500);
-    return () => clearInterval(id);
-  }, []);
   return (
-    <div aria-hidden className="pointer-events-none absolute inset-0 overflow-hidden">
-      {HERO_GALLERY.map((src, idx) => (
-        <img
+    <div className="my-12 grid grid-cols-2 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
+      {HERO_GALLERY.map((src) => (
+        <div
           key={src}
-          src={src}
-          alt=""
-          className="absolute inset-0 w-full h-full object-cover"
-          style={{
-            opacity: idx === i ? 1 : 0,
-            transition: "opacity 1400ms ease-in-out",
-          }}
-        />
+          className="relative overflow-hidden rounded-xl border border-border aspect-[4/5] bg-muted"
+          style={{ boxShadow: "0 1px 3px rgba(15,23,42,0.06), 0 12px 32px rgba(15,23,42,0.08)" }}
+        >
+          <img src={src} alt="" className="absolute inset-0 w-full h-full object-cover" />
+        </div>
       ))}
-      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/85 to-background" />
     </div>
   );
 }
@@ -452,7 +443,6 @@ function LandingPage() {
       <Nav />
       <main className="flex-1">
         <section className="relative px-6 pt-20 pb-16 text-center">
-          <HeroGallery />
           <div className="relative">
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-[-0.015em] text-foreground max-w-4xl mx-auto mb-8">
               Transforming corporate event spend into <em className="not-italic text-primary">measurable employee impact</em>.
@@ -460,6 +450,7 @@ function LandingPage() {
             <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
               Stop wasting budget on uninspired happy hours. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
             </p>
+            <HeroGallery />
             <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
               Match. Book. Measure.
             </h1>
