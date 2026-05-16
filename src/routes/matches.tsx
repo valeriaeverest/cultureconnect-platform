@@ -63,12 +63,16 @@ const MATCHES: Match[] = [
 
 const OFFICE: [number, number] = [45.5152, -122.6784];
 
-function numberedPin(n: number) {
+function numberedPin(n: number, hovered = false) {
+  const size = hovered ? 40 : 32;
+  const shadow = hovered
+    ? "0 6px 16px rgba(59,130,246,0.5)"
+    : "0 2px 6px rgba(15,23,42,0.25)";
   return L.divIcon({
     className: "",
-    html: `<div style="width:32px;height:32px;border-radius:9999px;background:#3B82F6;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-weight:600;font-size:14px;box-shadow:0 2px 6px rgba(15,23,42,0.25);border:2px solid #fff;">${n}</div>`,
-    iconSize: [32, 32],
-    iconAnchor: [16, 16],
+    html: `<div style="width:${size}px;height:${size}px;border-radius:9999px;background:#3B82F6;color:#fff;display:flex;align-items:center;justify-content:center;font-family:Inter,sans-serif;font-weight:600;font-size:${hovered ? 16 : 14}px;box-shadow:${shadow};border:2px solid #fff;transition:all 160ms ease-out;">${n}</div>`,
+    iconSize: [size, size],
+    iconAnchor: [size / 2, size / 2],
   });
 }
 
@@ -200,6 +204,7 @@ function MapPanel({ hoveredId }: { hoveredId: number | null }) {
 
 function MatchesPage() {
   const [mounted, setMounted] = useState(false);
+  const [hoveredId, setHoveredId] = useState<number | null>(null);
   useEffect(() => setMounted(true), []);
 
   return (
@@ -222,11 +227,17 @@ function MatchesPage() {
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-5">
           <div className="space-y-6 lg:col-span-3">
             {MATCHES.map((m) => (
-              <MatchCard key={m.id} match={m} />
+              <MatchCard key={m.id} match={m} onHover={setHoveredId} />
             ))}
           </div>
           <aside className="lg:col-span-2">
-            <div className="lg:sticky lg:top-6">{mounted ? <MapPanel /> : <div style={{ height: "600px" }} className="rounded-lg border bg-muted" />}</div>
+            <div className="lg:sticky lg:top-6">
+              {mounted ? (
+                <MapPanel hoveredId={hoveredId} />
+              ) : (
+                <div style={{ height: "600px" }} className="rounded-lg border bg-muted" />
+              )}
+            </div>
           </aside>
         </div>
 
