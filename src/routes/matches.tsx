@@ -6,6 +6,9 @@ import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import { Button } from "@/components/ui/button";
 import { saveSelectedMatch } from "@/lib/intake-store";
+import breweryImg from "@/assets/brewery.png";
+import hayleyImg from "@/assets/hayley.png";
+import crepeImg from "@/assets/crepe.png";
 
 export const Route = createFileRoute("/matches")({
   head: () => ({
