@@ -456,26 +456,28 @@ function LandingPage() {
       <main className="flex-1">
         <section className="relative px-6 pt-20 pb-16 text-center">
           <HeroGallery />
-          <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
-            Stop wasting budget on uninspired happy hours. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
-          </p>
-          <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
-            Build culture, not hangovers.
-          </h1>
-          <p className="mt-5 text-lg text-secondary max-w-[600px] mx-auto leading-relaxed">
-            The marketplace for company culture events. Match with vetted local
-            artists, book instantly, done.
-          </p>
-
-          <div className="mt-12">
-            <IntakeCard />
-            <p className="mt-5 text-sm text-secondary">
-              Curated from 400+ vetted local creatives. Free to explore — no account needed.
+          <div className="relative">
+            <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
+              Stop wasting budget on uninspired happy hours. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
             </p>
-          </div>
+            <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
+              Build culture, not hangovers.
+            </h1>
+            <p className="mt-5 text-lg text-secondary max-w-[600px] mx-auto leading-relaxed">
+              The marketplace for company culture events. Match with vetted local
+              artists, book instantly, done.
+            </p>
 
-          <div className="max-w-6xl mx-auto">
-            <TrustStrip />
+            <div className="mt-12">
+              <IntakeCard />
+              <p className="mt-5 text-sm text-secondary">
+                Curated from 400+ vetted local creatives. Free to explore — no account needed.
+              </p>
+            </div>
+
+            <div className="max-w-6xl mx-auto">
+              <TrustStrip />
+            </div>
           </div>
         </section>
 
