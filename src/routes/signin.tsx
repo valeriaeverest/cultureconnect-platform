@@ -24,9 +24,7 @@ function Nav() {
   return (
     <header className="bg-white border-b border-border">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="text-lg font-semibold tracking-tight text-foreground">
-          Lattice
-        </Link>
+        <BrandMark />
         <nav className="flex items-center gap-7">
           <Link to="/" className="text-sm text-secondary hover:text-foreground transition-colors">
             Home

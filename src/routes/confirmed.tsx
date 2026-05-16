@@ -26,9 +26,7 @@ function Nav() {
   return (
     <header className="border-b bg-white">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="text-lg font-semibold tracking-tight text-foreground">
-          Lattice
-        </Link>
+        <BrandMark />
         <nav className="flex items-center gap-8 text-sm text-secondary">
           <Link to="/signin" search={{ tab: "artist" }} className="hover:text-foreground">
             For artists

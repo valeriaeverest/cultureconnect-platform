@@ -76,9 +76,7 @@ function Nav() {
   return (
     <header className="bg-white border-b border-border">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <span className="text-lg font-semibold tracking-tight text-foreground">
-          Lattice
-        </span>
+        <BrandMark />
         <nav className="flex items-center gap-7">
           <a href="#how" className="text-sm text-secondary hover:text-foreground transition-colors">
             How it works
