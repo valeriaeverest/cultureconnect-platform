@@ -46,8 +46,8 @@ function HeroGallery() {
 
 const GALLERY_PHOTOS: { src: string; caption: string }[] = [
   { src: gallery1, caption: "Curated local experiences mapped to your team's neighborhood." },
-  { src: gallery2, caption: "Event NPS climbing well above industry benchmarks, event after event." },
   { src: gallery3, caption: "Perfect matches surfaced for your team — vetted artists, venues, and vendors." },
+  { src: gallery2, caption: "Event NPS climbing well above industry benchmarks, event after event." },
 ];
 
 function PhotoGallery() {
@@ -437,24 +437,28 @@ const ARTIST_TESTIMONIALS = [
       "Before Lattice, I was spending 60% of my week cold-emailing venues and chasing down late invoice payments. Now, I just open the platform and accept bookings. Lattice has streamlined my schedule to the point where I'm performing 3 to 4 times a week at high-end corporate spaces. It's consistent, reliable income that actually allows me to focus on my music.",
     name: "Maya Lin",
     role: "Indie-Folk Singer-Songwriter",
+    image: at1,
   },
   {
     quote:
       "Lattice completely handles the marketing and logistics for us. As a small food truck business, we don't have the budget for big ad campaigns, but Lattice's geolocation database puts us right in front of corporate clients looking for local flavor. They match us with companies that perfectly fit our vibe and let us do what we do best: cook incredible food.",
     name: "Carlos & Elena Ruiz",
     role: "Co-Owners, Taquería El Sol",
+    image: at2,
   },
   {
     quote:
       "The community awareness I've gained through Lattice has been a game-changer. I did a live-painting experience for a corporate anniversary event last month, and three of the executives liked my style so much they commissioned private pieces for their homes. Lattice bridges the gap between independent creatives and local businesses that genuinely want to invest in us.",
     name: "Jordan Brooks",
     role: "Muralist & Fine Artist",
+    image: at3,
   },
   {
     quote:
       "We absolutely love working with Lattice customers. The corporate teams we meet are so engaged, respectful, and excited to support local, diverse businesses. During our interactive espresso and pastry pop-ups, the employees always want to hear our story. It's an incredibly uplifting environment, and the financial ROI for our business has been phenomenal.",
     name: "Sofia Amadou",
     role: "Founder, Café de Cacao",
+    image: at1,
   },
 ];
 
