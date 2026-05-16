@@ -390,6 +390,11 @@ function ImpactPage() {
           </div>
         </section>
 
+        {/* Historical NPS chart */}
+        <section className="mt-16">
+          <NpsHistoryChart />
+        </section>
+
         {/* CTAs */}
         <section className="mt-16">
           <div className="flex flex-col gap-3 sm:flex-row">
