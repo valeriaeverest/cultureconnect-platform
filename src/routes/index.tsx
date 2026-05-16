@@ -69,8 +69,8 @@ function PhotoGallery() {
               style={{ opacity: idx === i ? 1 : 0, transition: "opacity 600ms ease-in-out" }}
             />
           ))}
-          <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/60 to-transparent">
-            <p className="text-white text-sm sm:text-base max-w-2xl leading-snug">
+          <div className="absolute inset-x-0 bottom-0 pt-16 pb-6 px-6 bg-gradient-to-t from-black/90 via-black/70 to-transparent">
+            <p className="text-white text-sm sm:text-base max-w-2xl leading-snug drop-shadow-md">
               {GALLERY_PHOTOS[i].caption}
             </p>
           </div>
