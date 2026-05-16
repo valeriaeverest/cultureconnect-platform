@@ -108,14 +108,24 @@ function Nav() {
   );
 }
 
-function MatchCard({ match }: { match: Match }) {
+function MatchCard({
+  match,
+  onHover,
+}: {
+  match: Match;
+  onHover: (id: number | null) => void;
+}) {
   const navigate = useNavigate();
   const handleBook = () => {
     saveSelectedMatch(match.id);
     navigate({ to: "/book" });
   };
   return (
-    <div className="relative rounded-lg border bg-card p-6 shadow-sm transition-shadow hover:shadow-md">
+    <div
+      onMouseEnter={() => onHover(match.id)}
+      onMouseLeave={() => onHover(null)}
+      className="relative rounded-lg border bg-card p-6 shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-lg"
+    >
       <div className="absolute -left-3 -top-3 flex h-9 w-9 items-center justify-center rounded-full bg-primary text-sm font-semibold text-primary-foreground shadow-md ring-4 ring-background">
         {match.id}
       </div>
@@ -157,7 +167,7 @@ function MatchCard({ match }: { match: Match }) {
   );
 }
 
-function MapPanel() {
+function MapPanel({ hoveredId }: { hoveredId: number | null }) {
   return (
     <div className="overflow-hidden rounded-lg border bg-card shadow-sm">
       <div style={{ height: "600px", width: "100%" }}>
@@ -173,7 +183,11 @@ function MapPanel() {
           />
           <Marker position={OFFICE} icon={officePin()} />
           {MATCHES.map((m) => (
-            <Marker key={m.id} position={m.coords} icon={numberedPin(m.id)} />
+            <Marker
+              key={`${m.id}-${hoveredId === m.id ? "h" : "n"}`}
+              position={m.coords}
+              icon={numberedPin(m.id, hoveredId === m.id)}
+            />
           ))}
         </MapContainer>
       </div>
