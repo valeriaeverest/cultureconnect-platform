@@ -160,7 +160,7 @@ function MatchCard({ match }: { match: Match }) {
 function MapPanel() {
   return (
     <div className="overflow-hidden rounded-lg border bg-card shadow-sm">
-      <div className="h-[520px] w-full">
+      <div style={{ height: "600px", width: "100%" }}>
         <MapContainer
           center={OFFICE}
           zoom={12}
@@ -212,7 +212,7 @@ function MatchesPage() {
             ))}
           </div>
           <aside className="lg:col-span-2">
-            <div className="lg:sticky lg:top-6">{mounted ? <MapPanel /> : <div className="h-[560px] rounded-lg border bg-muted" />}</div>
+            <div className="lg:sticky lg:top-6">{mounted ? <MapPanel /> : <div style={{ height: "600px" }} className="rounded-lg border bg-muted" />}</div>
           </aside>
         </div>
 
