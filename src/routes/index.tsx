@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   defaultIntake,
@@ -81,6 +81,7 @@ function Nav() {
 }
 
 function IntakeCard() {
+  const navigate = useNavigate();
   const [state, setState] = useState<IntakeState>(defaultIntake);
 
   useEffect(() => {
@@ -186,6 +187,10 @@ function IntakeCard() {
 
       <button
         type="button"
+        onClick={() => {
+          saveIntake(state);
+          navigate({ to: "/intake" });
+        }}
         className="mt-7 w-full h-12 rounded-md font-medium text-white transition-colors"
         style={{ backgroundColor: "var(--color-primary)", borderRadius: 6 }}
         onMouseEnter={(e) => (e.currentTarget.style.backgroundColor = "var(--color-primary-hover)")}
