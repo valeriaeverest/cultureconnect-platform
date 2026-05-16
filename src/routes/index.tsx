@@ -201,7 +201,7 @@ function IntakeCard() {
                   key={slot.id}
                   type="button"
                   onClick={() => update("timeSlot", slot.id)}
-                  className="text-sm px-4 h-10 rounded-full transition-colors border"
+                  className="text-sm px-4 h-10 rounded-full transition-colors border cursor-pointer hover:opacity-90"
                   style={{
                     backgroundColor: active ? "var(--color-primary)" : "var(--color-chip)",
                     color: active ? "#fff" : "var(--color-foreground)",
