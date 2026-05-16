@@ -82,8 +82,7 @@ function Nav() {
             How it works
           </a>
           <Link
-            to="/signin"
-            search={{ tab: "artist" }}
+            to="/vendor-apply"
             className="text-sm text-secondary hover:text-foreground transition-colors"
           >
             For artists

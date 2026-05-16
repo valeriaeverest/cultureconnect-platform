@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as VendorApplyRouteImport } from './routes/vendor-apply'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as MatchesRouteImport } from './routes/matches'
 import { Route as IntakeRouteImport } from './routes/intake'
@@ -18,6 +19,11 @@ import { Route as ConfirmedRouteImport } from './routes/confirmed'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as IndexRouteImport } from './routes/index'
 
+const VendorApplyRoute = VendorApplyRouteImport.update({
+  id: '/vendor-apply',
+  path: '/vendor-apply',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SigninRoute = SigninRouteImport.update({
   id: '/signin',
   path: '/signin',
@@ -68,6 +74,7 @@ export interface FileRoutesByFullPath {
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
+  '/vendor-apply': typeof VendorApplyRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -78,6 +85,7 @@ export interface FileRoutesByTo {
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
+  '/vendor-apply': typeof VendorApplyRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -89,6 +97,7 @@ export interface FileRoutesById {
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
+  '/vendor-apply': typeof VendorApplyRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -101,6 +110,7 @@ export interface FileRouteTypes {
     | '/intake'
     | '/matches'
     | '/signin'
+    | '/vendor-apply'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -111,6 +121,7 @@ export interface FileRouteTypes {
     | '/intake'
     | '/matches'
     | '/signin'
+    | '/vendor-apply'
   id:
     | '__root__'
     | '/'
@@ -121,6 +132,7 @@ export interface FileRouteTypes {
     | '/intake'
     | '/matches'
     | '/signin'
+    | '/vendor-apply'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -132,10 +144,18 @@ export interface RootRouteChildren {
   IntakeRoute: typeof IntakeRoute
   MatchesRoute: typeof MatchesRoute
   SigninRoute: typeof SigninRoute
+  VendorApplyRoute: typeof VendorApplyRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/vendor-apply': {
+      id: '/vendor-apply'
+      path: '/vendor-apply'
+      fullPath: '/vendor-apply'
+      preLoaderRoute: typeof VendorApplyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/signin': {
       id: '/signin'
       path: '/signin'
@@ -204,6 +224,7 @@ const rootRouteChildren: RootRouteChildren = {
   IntakeRoute: IntakeRoute,
   MatchesRoute: MatchesRoute,
   SigninRoute: SigninRoute,
+  VendorApplyRoute: VendorApplyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
