@@ -16,6 +16,7 @@ import { Route as IntakeRouteImport } from './routes/intake'
 import { Route as ImpactRouteImport } from './routes/impact'
 import { Route as CreateAccountRouteImport } from './routes/create-account'
 import { Route as ConfirmedRouteImport } from './routes/confirmed'
+import { Route as CaseStudiesRouteImport } from './routes/case-studies'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -54,6 +55,11 @@ const ConfirmedRoute = ConfirmedRouteImport.update({
   path: '/confirmed',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CaseStudiesRoute = CaseStudiesRouteImport.update({
+  id: '/case-studies',
+  path: '/case-studies',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookRoute = BookRouteImport.update({
   id: '/book',
   path: '/book',
@@ -68,6 +74,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
   '/impact': typeof ImpactRoute
@@ -79,6 +86,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
   '/impact': typeof ImpactRoute
@@ -91,6 +99,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/case-studies': typeof CaseStudiesRoute
   '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
   '/impact': typeof ImpactRoute
@@ -104,6 +113,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/book'
+    | '/case-studies'
     | '/confirmed'
     | '/create-account'
     | '/impact'
@@ -115,6 +125,7 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/book'
+    | '/case-studies'
     | '/confirmed'
     | '/create-account'
     | '/impact'
@@ -126,6 +137,7 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/book'
+    | '/case-studies'
     | '/confirmed'
     | '/create-account'
     | '/impact'
@@ -138,6 +150,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookRoute: typeof BookRoute
+  CaseStudiesRoute: typeof CaseStudiesRoute
   ConfirmedRoute: typeof ConfirmedRoute
   CreateAccountRoute: typeof CreateAccountRoute
   ImpactRoute: typeof ImpactRoute
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConfirmedRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/case-studies': {
+      id: '/case-studies'
+      path: '/case-studies'
+      fullPath: '/case-studies'
+      preLoaderRoute: typeof CaseStudiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book': {
       id: '/book'
       path: '/book'
@@ -218,6 +238,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookRoute: BookRoute,
+  CaseStudiesRoute: CaseStudiesRoute,
   ConfirmedRoute: ConfirmedRoute,
   CreateAccountRoute: CreateAccountRoute,
   ImpactRoute: ImpactRoute,
@@ -229,3 +250,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
