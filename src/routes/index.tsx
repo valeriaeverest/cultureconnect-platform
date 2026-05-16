@@ -459,13 +459,6 @@ function LandingPage() {
               artists, book instantly, done.
             </p>
 
-            <div className="mt-12">
-              <IntakeCard />
-              <p className="mt-5 text-sm text-secondary">
-                Curated from 400+ vetted local creatives. Free to explore — no account needed.
-              </p>
-            </div>
-
             <div className="max-w-6xl mx-auto">
               <TrustStrip />
             </div>
@@ -474,6 +467,21 @@ function LandingPage() {
 
         <Features />
         <Testimonials />
+
+        <section className="px-6 py-24 bg-background">
+          <div className="max-w-4xl mx-auto text-center">
+            <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em] mb-4">
+              Ready to curate your next experience?
+            </h2>
+            <p className="text-base text-secondary mb-10 max-w-2xl mx-auto">
+              Tell us about your team and we'll match you with vetted local creators.
+            </p>
+            <IntakeCard />
+            <p className="mt-5 text-sm text-secondary">
+              Curated from 400+ vetted local creatives. Free to explore — no account needed.
+            </p>
+          </div>
+        </section>
       </main>
       <Footer />
     </div>
