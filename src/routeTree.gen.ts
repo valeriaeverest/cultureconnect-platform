@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VendorApplyRouteImport } from './routes/vendor-apply'
 import { Route as SigninRouteImport } from './routes/signin'
+import { Route as PricingRouteImport } from './routes/pricing'
 import { Route as MatchesRouteImport } from './routes/matches'
 import { Route as IntakeRouteImport } from './routes/intake'
 import { Route as ImpactRouteImport } from './routes/impact'
@@ -28,6 +29,11 @@ const VendorApplyRoute = VendorApplyRouteImport.update({
 const SigninRoute = SigninRouteImport.update({
   id: '/signin',
   path: '/signin',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PricingRoute = PricingRouteImport.update({
+  id: '/pricing',
+  path: '/pricing',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MatchesRoute = MatchesRouteImport.update({
@@ -80,6 +86,7 @@ export interface FileRoutesByFullPath {
   '/impact': typeof ImpactRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
+  '/pricing': typeof PricingRoute
   '/signin': typeof SigninRoute
   '/vendor-apply': typeof VendorApplyRoute
 }
@@ -92,6 +99,7 @@ export interface FileRoutesByTo {
   '/impact': typeof ImpactRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
+  '/pricing': typeof PricingRoute
   '/signin': typeof SigninRoute
   '/vendor-apply': typeof VendorApplyRoute
 }
@@ -105,6 +113,7 @@ export interface FileRoutesById {
   '/impact': typeof ImpactRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
+  '/pricing': typeof PricingRoute
   '/signin': typeof SigninRoute
   '/vendor-apply': typeof VendorApplyRoute
 }
@@ -119,6 +128,7 @@ export interface FileRouteTypes {
     | '/impact'
     | '/intake'
     | '/matches'
+    | '/pricing'
     | '/signin'
     | '/vendor-apply'
   fileRoutesByTo: FileRoutesByTo
@@ -131,6 +141,7 @@ export interface FileRouteTypes {
     | '/impact'
     | '/intake'
     | '/matches'
+    | '/pricing'
     | '/signin'
     | '/vendor-apply'
   id:
@@ -143,6 +154,7 @@ export interface FileRouteTypes {
     | '/impact'
     | '/intake'
     | '/matches'
+    | '/pricing'
     | '/signin'
     | '/vendor-apply'
   fileRoutesById: FileRoutesById
@@ -156,6 +168,7 @@ export interface RootRouteChildren {
   ImpactRoute: typeof ImpactRoute
   IntakeRoute: typeof IntakeRoute
   MatchesRoute: typeof MatchesRoute
+  PricingRoute: typeof PricingRoute
   SigninRoute: typeof SigninRoute
   VendorApplyRoute: typeof VendorApplyRoute
 }
@@ -174,6 +187,13 @@ declare module '@tanstack/react-router' {
       path: '/signin'
       fullPath: '/signin'
       preLoaderRoute: typeof SigninRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pricing': {
+      id: '/pricing'
+      path: '/pricing'
+      fullPath: '/pricing'
+      preLoaderRoute: typeof PricingRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/matches': {
@@ -244,9 +264,20 @@ const rootRouteChildren: RootRouteChildren = {
   ImpactRoute: ImpactRoute,
   IntakeRoute: IntakeRoute,
   MatchesRoute: MatchesRoute,
+  PricingRoute: PricingRoute,
   SigninRoute: SigninRoute,
   VendorApplyRoute: VendorApplyRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
