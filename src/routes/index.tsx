@@ -3,6 +3,11 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import crepeImg from "@/assets/crepe.png";
 import hayleyImg from "@/assets/hayley.png";
 import breweryImg from "@/assets/brewery.png";
+import ct1 from "@/assets/ct1.jpg";
+import ct2 from "@/assets/ct2.jpg";
+import ct3 from "@/assets/ct3.jpg";
+import ct4 from "@/assets/ct4.jpg";
+import ct5 from "@/assets/ct5.jpg";
 
 const HERO_GALLERY = [breweryImg, crepeImg, hayleyImg];
 
