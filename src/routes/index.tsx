@@ -449,6 +449,7 @@ function LandingPage() {
         </section>
 
         <Features />
+        <Testimonials />
       </main>
       <Footer />
     </div>
