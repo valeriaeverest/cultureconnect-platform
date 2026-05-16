@@ -73,7 +73,7 @@ function ConfirmedPage() {
   const heroSrc = HERO_BY_MATCH[matchId];
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background page-fade">
       <Nav />
       <main className="mx-auto max-w-3xl px-6 py-16">
         <div className="flex flex-col items-center text-center">

@@ -134,7 +134,7 @@ function BookPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background page-fade">
       <Nav />
       <main className="mx-auto max-w-6xl px-6 py-12">
         <div className="mb-10">

@@ -307,7 +307,7 @@ function IntakePage() {
   };
 
   return (
-    <div className="min-h-screen bg-background flex flex-col">
+    <div className="min-h-screen bg-background flex flex-col page-fade">
       <Nav />
       <main className="flex-1 px-6 py-12">
         <div className="mx-auto w-full" style={{ maxWidth: 760 }}>

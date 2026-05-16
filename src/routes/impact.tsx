@@ -1,6 +1,37 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+// Animate a number from 0 to target over `duration` ms.
+function useCountUp(target: number, duration = 400, decimals = 0) {
+  const [value, setValue] = useState(0);
+  const startRef = useRef<number | null>(null);
+  useEffect(() => {
+    let raf = 0;
+    const step = (t: number) => {
+      if (startRef.current === null) startRef.current = t;
+      const elapsed = t - startRef.current;
+      const p = Math.min(1, elapsed / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setValue(target * eased);
+      if (p < 1) raf = requestAnimationFrame(step);
+      else setValue(target);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration]);
+  return Number(value.toFixed(decimals));
+}
+
+// Parse a metric string into { prefix, number, suffix, decimals } for count-up.
+function parseMetric(v: string): { prefix: string; num: number; suffix: string; decimals: number } {
+  const m = v.match(/^([^\d-]*)(-?\d+(?:\.\d+)?)(.*)$/);
+  if (!m) return { prefix: "", num: 0, suffix: v, decimals: 0 };
+  const numStr = m[2];
+  const decimals = numStr.includes(".") ? numStr.split(".")[1].length : 0;
+  return { prefix: m[1], num: parseFloat(numStr), suffix: m[3], decimals };
+}
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
@@ -96,12 +127,15 @@ const BENCHMARKS = [
 ];
 
 function MetricCard({ m }: { m: (typeof METRICS)[number] }) {
+  const { prefix, num, suffix, decimals } = parseMetric(m.value);
+  const current = useCountUp(num, 400, decimals);
+  const display = `${prefix}${current.toFixed(decimals)}${suffix}`;
   return (
     <div className="rounded-lg border bg-card p-6 shadow-sm">
       <div className="text-sm font-medium text-secondary">{m.title}</div>
       <div className="mt-3 flex items-center gap-2">
-        <div className="text-[36px] font-semibold leading-none tracking-tight text-foreground">
-          {m.value}
+        <div className="text-[36px] font-semibold leading-none tracking-tight text-foreground tabular-nums">
+          {display}
         </div>
         {m.trend && (
           <span
@@ -118,9 +152,35 @@ function MetricCard({ m }: { m: (typeof METRICS)[number] }) {
   );
 }
 
+function SentimentBar({ label, pct }: { label: string; pct: number }) {
+  const [w, setW] = useState(0);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setW(pct));
+    return () => cancelAnimationFrame(id);
+  }, [pct]);
+  return (
+    <div>
+      <div className="flex items-center justify-between text-sm">
+        <span className="text-foreground">{label}</span>
+        <span className="font-semibold tabular-nums text-foreground">{pct}%</span>
+      </div>
+      <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-muted">
+        <div
+          className="h-full rounded-full"
+          style={{
+            width: `${w}%`,
+            background: "var(--success)",
+            transition: "width 200ms ease-out",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 function ImpactPage() {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background page-fade">
       <Nav />
       <main className="mx-auto max-w-7xl px-6 py-12">
         {/* Header */}
@@ -168,18 +228,7 @@ function ImpactPage() {
             <h2 className="text-lg font-semibold text-foreground">What your team felt</h2>
             <div className="mt-5 space-y-4">
               {SENTIMENT.map((s) => (
-                <div key={s.label}>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-foreground">{s.label}</span>
-                    <span className="font-semibold tabular-nums text-foreground">{s.pct}%</span>
-                  </div>
-                  <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-muted">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{ width: `${s.pct}%`, background: "var(--success)" }}
-                    />
-                  </div>
-                </div>
+                <SentimentBar key={s.label} label={s.label} pct={s.pct} />
               ))}
             </div>
           </div>
