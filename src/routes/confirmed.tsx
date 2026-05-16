@@ -1,6 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 import { Check, ChevronDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { loadSelectedMatch } from "@/lib/intake-store";
+import crepeImg from "@/assets/crepe.png";
+import hayleyImg from "@/assets/hayley.png";
+
+const HERO_BY_MATCH: Record<number, string> = {
+  1: crepeImg, // brewery.png not yet uploaded — using crepe as placeholder
+  2: hayleyImg,
+  3: crepeImg,
+};
 
 export const Route = createFileRoute("/confirmed")({
   head: () => ({
@@ -55,6 +65,12 @@ const NEXT_STEPS = [
 ];
 
 function ConfirmedPage() {
+  const [matchId, setMatchId] = useState<number>(3);
+  useEffect(() => {
+    const id = loadSelectedMatch();
+    if (id && HERO_BY_MATCH[id]) setMatchId(id);
+  }, []);
+  const heroSrc = HERO_BY_MATCH[matchId];
 
   return (
     <div className="min-h-screen bg-background">
@@ -82,13 +98,12 @@ function ConfirmedPage() {
         </div>
 
         <figure className="mt-12">
-          <div
-            className="relative aspect-video w-full overflow-hidden rounded-lg border shadow-sm"
-            style={{
-              background:
-                "linear-gradient(135deg, color-mix(in oklab, var(--primary) 14%, white), color-mix(in oklab, var(--success) 18%, white))",
-            }}
-          >
+          <div className="relative aspect-video w-full overflow-hidden rounded-lg border shadow-sm bg-muted">
+            <img
+              src={heroSrc}
+              alt="AI preview of your event"
+              className="h-full w-full object-cover"
+            />
             <span className="absolute right-4 top-4 inline-flex items-center gap-1.5 rounded-full bg-primary px-3 py-1 text-xs font-medium text-primary-foreground shadow">
               <Sparkles className="h-3.5 w-3.5" />
               AI preview
