@@ -11,6 +11,9 @@ import ct5 from "@/assets/ct5.jpg";
 import gallery1 from "@/assets/gallery-1.png";
 import gallery2 from "@/assets/gallery-2.png";
 import gallery3 from "@/assets/gallery-3.png";
+import at1 from "@/assets/at1.jpg";
+import at2 from "@/assets/at2.jpg";
+import at3 from "@/assets/at3.jpg";
 
 const HERO_GALLERY = [breweryImg, crepeImg, hayleyImg];
 
