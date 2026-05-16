@@ -127,7 +127,10 @@ function BookPage() {
 
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    navigate({ to: "/book" }); // /create-account not built yet
+    if (typeof window !== "undefined") {
+      window.localStorage.setItem("lattice:booking-email", email);
+    }
+    navigate({ to: "/create-account" });
   };
 
   return (
