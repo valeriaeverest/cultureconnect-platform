@@ -455,6 +455,9 @@ function LandingPage() {
         <section className="relative px-6 pt-20 pb-16 text-center">
           <HeroGallery />
           <div className="relative">
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-[-0.015em] text-foreground max-w-4xl mx-auto mb-8">
+              Transforming corporate event spend into <em className="not-italic text-primary">measurable employee impact</em>.
+            </h1>
             <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
               Stop wasting budget on uninspired happy hours. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
             </p>
