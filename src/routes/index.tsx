@@ -14,6 +14,7 @@ import gallery3 from "@/assets/gallery-3.png";
 import at1 from "@/assets/at1.jpg";
 import at2 from "@/assets/at2.jpg";
 import at3 from "@/assets/at3.jpg";
+import at4 from "@/assets/at4.jpg";
 
 const HERO_GALLERY = [breweryImg, crepeImg, hayleyImg];
 
@@ -458,7 +459,7 @@ const ARTIST_TESTIMONIALS = [
       "We absolutely love working with Lattice customers. The corporate teams we meet are so engaged, respectful, and excited to support local, diverse businesses. During our interactive espresso and pastry pop-ups, the employees always want to hear our story. It's an incredibly uplifting environment, and the financial ROI for our business has been phenomenal.",
     name: "Sofia Amadou",
     role: "Founder, Café de Cacao",
-    image: at1,
+    image: at4,
   },
 ];
 
