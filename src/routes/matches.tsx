@@ -141,13 +141,14 @@ function MatchCard({
       </div>
       <div className="flex gap-6">
         <div
-          className="aspect-[4/3] w-2/5 shrink-0 rounded-lg bg-gradient-to-br from-muted to-accent"
-          style={{
-            backgroundImage:
-              "linear-gradient(135deg, color-mix(in oklab, var(--primary) 12%, white), color-mix(in oklab, var(--success) 18%, white))",
-          }}
-          aria-hidden
-        />
+          className="aspect-[4/3] w-2/5 shrink-0 overflow-hidden rounded-lg bg-muted"
+        >
+          <img
+            src={match.image}
+            alt={match.title}
+            className="h-full w-full object-cover"
+          />
+        </div>
         <div className="flex w-3/5 flex-col">
           <div className="text-xs font-semibold uppercase tracking-wider text-success">
             {match.category}
