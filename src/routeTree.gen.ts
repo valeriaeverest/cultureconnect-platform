@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as SigninRouteImport } from './routes/signin'
 import { Route as MatchesRouteImport } from './routes/matches'
 import { Route as IntakeRouteImport } from './routes/intake'
+import { Route as CreateAccountRouteImport } from './routes/create-account'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -30,6 +31,11 @@ const IntakeRoute = IntakeRouteImport.update({
   path: '/intake',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreateAccountRoute = CreateAccountRouteImport.update({
+  id: '/create-account',
+  path: '/create-account',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookRoute = BookRouteImport.update({
   id: '/book',
   path: '/book',
@@ -44,6 +50,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/create-account': typeof CreateAccountRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/create-account': typeof CreateAccountRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
@@ -59,21 +67,36 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/create-account': typeof CreateAccountRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
   '/signin': typeof SigninRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/book' | '/intake' | '/matches' | '/signin'
+  fullPaths:
+    | '/'
+    | '/book'
+    | '/create-account'
+    | '/intake'
+    | '/matches'
+    | '/signin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book' | '/intake' | '/matches' | '/signin'
-  id: '__root__' | '/' | '/book' | '/intake' | '/matches' | '/signin'
+  to: '/' | '/book' | '/create-account' | '/intake' | '/matches' | '/signin'
+  id:
+    | '__root__'
+    | '/'
+    | '/book'
+    | '/create-account'
+    | '/intake'
+    | '/matches'
+    | '/signin'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookRoute: typeof BookRoute
+  CreateAccountRoute: typeof CreateAccountRoute
   IntakeRoute: typeof IntakeRoute
   MatchesRoute: typeof MatchesRoute
   SigninRoute: typeof SigninRoute
@@ -102,6 +125,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IntakeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/create-account': {
+      id: '/create-account'
+      path: '/create-account'
+      fullPath: '/create-account'
+      preLoaderRoute: typeof CreateAccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book': {
       id: '/book'
       path: '/book'
@@ -122,6 +152,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookRoute: BookRoute,
+  CreateAccountRoute: CreateAccountRoute,
   IntakeRoute: IntakeRoute,
   MatchesRoute: MatchesRoute,
   SigninRoute: SigninRoute,
@@ -129,3 +160,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
