@@ -18,11 +18,10 @@ function HeroGallery() {
           key={src}
           src={src}
           alt=""
-          className="absolute inset-0 w-full h-full object-cover ease-in-out"
+          className="absolute inset-0 w-full h-full object-cover"
           style={{
             opacity: idx === i ? 1 : 0,
-            transform: idx === i ? "scale(1.06)" : "scale(1)",
-            transition: "opacity 1400ms ease-in-out, transform 6000ms ease-out",
+            transition: "opacity 1400ms ease-in-out",
           }}
         />
       ))}
