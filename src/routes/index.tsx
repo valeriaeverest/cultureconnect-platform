@@ -2,20 +2,33 @@ import { BrandMark } from "@/components/brand-mark";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import crepeImg from "@/assets/crepe.png";
 import hayleyImg from "@/assets/hayley.png";
+import breweryImg from "@/assets/brewery.png";
+import concertImg from "@/assets/concert.png";
 
-const HERO_GALLERY = [crepeImg, hayleyImg];
+const HERO_GALLERY = [concertImg, breweryImg, crepeImg, hayleyImg];
 
 function HeroGallery() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const id = setInterval(() => setI((n) => (n + 1) % HERO_GALLERY.length), 4000);
+    return () => clearInterval(id);
+  }, []);
   return (
-    <div className="my-12 grid grid-cols-2 sm:grid-cols-2 gap-4 max-w-3xl mx-auto">
-      {HERO_GALLERY.map((src) => (
-        <div
+    <div
+      className="relative my-12 mx-auto w-full max-w-4xl aspect-[16/9] overflow-hidden rounded-2xl border border-border bg-muted"
+      style={{ boxShadow: "0 2px 6px rgba(15,23,42,0.06), 0 20px 48px rgba(15,23,42,0.12)" }}
+    >
+      {HERO_GALLERY.map((src, idx) => (
+        <img
           key={src}
-          className="relative overflow-hidden rounded-xl border border-border aspect-[4/5] bg-muted"
-          style={{ boxShadow: "0 1px 3px rgba(15,23,42,0.06), 0 12px 32px rgba(15,23,42,0.08)" }}
-        >
-          <img src={src} alt="" className="absolute inset-0 w-full h-full object-cover" />
-        </div>
+          src={src}
+          alt=""
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{
+            opacity: idx === i ? 1 : 0,
+            transition: "opacity 1200ms ease-in-out",
+          }}
+        />
       ))}
     </div>
   );
