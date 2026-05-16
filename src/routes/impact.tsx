@@ -152,6 +152,32 @@ function MetricCard({ m }: { m: (typeof METRICS)[number] }) {
   );
 }
 
+function SentimentBar({ label, pct }: { label: string; pct: number }) {
+  const [w, setW] = useState(0);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setW(pct));
+    return () => cancelAnimationFrame(id);
+  }, [pct]);
+  return (
+    <div>
+      <div className="flex items-center justify-between text-sm">
+        <span className="text-foreground">{label}</span>
+        <span className="font-semibold tabular-nums text-foreground">{pct}%</span>
+      </div>
+      <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-muted">
+        <div
+          className="h-full rounded-full"
+          style={{
+            width: `${w}%`,
+            background: "var(--success)",
+            transition: "width 200ms ease-out",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
 function ImpactPage() {
   return (
     <div className="min-h-screen bg-background page-fade">
@@ -202,18 +228,7 @@ function ImpactPage() {
             <h2 className="text-lg font-semibold text-foreground">What your team felt</h2>
             <div className="mt-5 space-y-4">
               {SENTIMENT.map((s) => (
-                <div key={s.label}>
-                  <div className="flex items-center justify-between text-sm">
-                    <span className="text-foreground">{s.label}</span>
-                    <span className="font-semibold tabular-nums text-foreground">{s.pct}%</span>
-                  </div>
-                  <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-muted">
-                    <div
-                      className="h-full rounded-full transition-all"
-                      style={{ width: `${s.pct}%`, background: "var(--success)" }}
-                    />
-                  </div>
-                </div>
+                <SentimentBar key={s.label} label={s.label} pct={s.pct} />
               ))}
             </div>
           </div>
