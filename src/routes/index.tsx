@@ -560,7 +560,9 @@ function LandingPage() {
           </div>
         </section>
 
-        <PhotoGallery />
+        <div id="how">
+          <PhotoGallery />
+        </div>
 
         <Features />
         <Testimonials />
