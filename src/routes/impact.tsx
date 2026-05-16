@@ -1,6 +1,37 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight, ChevronDown, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
+// Animate a number from 0 to target over `duration` ms.
+function useCountUp(target: number, duration = 400, decimals = 0) {
+  const [value, setValue] = useState(0);
+  const startRef = useRef<number | null>(null);
+  useEffect(() => {
+    let raf = 0;
+    const step = (t: number) => {
+      if (startRef.current === null) startRef.current = t;
+      const elapsed = t - startRef.current;
+      const p = Math.min(1, elapsed / duration);
+      const eased = 1 - Math.pow(1 - p, 3);
+      setValue(target * eased);
+      if (p < 1) raf = requestAnimationFrame(step);
+      else setValue(target);
+    };
+    raf = requestAnimationFrame(step);
+    return () => cancelAnimationFrame(raf);
+  }, [target, duration]);
+  return Number(value.toFixed(decimals));
+}
+
+// Parse a metric string into { prefix, number, suffix, decimals } for count-up.
+function parseMetric(v: string): { prefix: string; num: number; suffix: string; decimals: number } {
+  const m = v.match(/^([^\d-]*)(-?\d+(?:\.\d+)?)(.*)$/);
+  if (!m) return { prefix: "", num: 0, suffix: v, decimals: 0 };
+  const numStr = m[2];
+  const decimals = numStr.includes(".") ? numStr.split(".")[1].length : 0;
+  return { prefix: m[1], num: parseFloat(numStr), suffix: m[3], decimals };
+}
 
 export const Route = createFileRoute("/impact")({
   head: () => ({
