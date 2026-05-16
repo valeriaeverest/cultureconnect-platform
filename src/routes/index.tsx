@@ -41,13 +41,13 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lattice — Build culture, not hangovers." },
+      { title: "Lattice — Match. Book. Measure." },
       {
         name: "description",
         content:
           "The marketplace for company culture events. Match with vetted local artists, book instantly, done.",
       },
-      { property: "og:title", content: "Lattice — Build culture, not hangovers." },
+      { property: "og:title", content: "Lattice — Match. Book. Measure." },
       {
         property: "og:description",
         content:
@@ -461,7 +461,7 @@ function LandingPage() {
               Stop wasting budget on uninspired happy hours. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
             </p>
             <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
-              Build culture, not hangovers.
+              Match. Book. Measure.
             </h1>
             <p className="mt-5 text-lg text-secondary max-w-[600px] mx-auto leading-relaxed">
               The marketplace for company culture events. Match with vetted local
