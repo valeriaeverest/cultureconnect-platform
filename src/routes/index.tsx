@@ -3,6 +3,11 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import crepeImg from "@/assets/crepe.png";
 import hayleyImg from "@/assets/hayley.png";
 import breweryImg from "@/assets/brewery.png";
+import ct1 from "@/assets/ct1.jpg";
+import ct2 from "@/assets/ct2.jpg";
+import ct3 from "@/assets/ct3.jpg";
+import ct4 from "@/assets/ct4.jpg";
+import ct5 from "@/assets/ct5.jpg";
 
 const HERO_GALLERY = [breweryImg, crepeImg, hayleyImg];
 
@@ -378,6 +383,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "Marcus Vance",
     role: "VP of People & Culture, Apex Analytics (500+ employees)",
     tag: "The Culture Champion",
+    image: ct1,
   },
   {
     quote:
@@ -385,6 +391,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "Elena Rostova",
     role: "Co-Founder & COO, Voxel Creative (80 employees)",
     tag: "The Retention Win",
+    image: ct2,
   },
   {
     quote:
@@ -392,6 +399,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "David Chen",
     role: "Head of Employee Experience, Meridian FinTech (1,200 employees)",
     tag: "The Local Impact Driver",
+    image: ct3,
   },
   {
     quote:
@@ -399,6 +407,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "Sarah Jenkins",
     role: "Director of Operations, Shift Logistics (250 employees)",
     tag: "The Productivity Booster",
+    image: ct4,
   },
   {
     quote:
@@ -406,6 +415,7 @@ const CUSTOMER_TESTIMONIALS = [
     name: "Amara Okafor",
     role: "Talent Acquisition Lead, Nebula Health (150 employees)",
     tag: "The Fast-Growing Scale-Up",
+    image: ct5,
   },
 ];
 
@@ -436,27 +446,34 @@ const ARTIST_TESTIMONIALS = [
   },
 ];
 
-function TestimonialCard({ quote, name, role, tag }: { quote: string; name: string; role: string; tag?: string }) {
+function TestimonialCard({ quote, name, role, tag, image }: { quote: string; name: string; role: string; tag?: string; image?: string }) {
   return (
     <figure
-      className="bg-card rounded-lg border border-border p-7 flex flex-col"
+      className="bg-card rounded-lg border border-border overflow-hidden flex flex-col"
       style={{ boxShadow: "0 1px 2px rgba(15,23,42,0.03)" }}
     >
-      {tag && (
-        <div
-          className="text-xs font-medium uppercase mb-3"
-          style={{ color: "var(--color-success)", letterSpacing: "0.05em" }}
-        >
-          {tag}
+      <div className="p-7 flex flex-col flex-1">
+        {tag && (
+          <div
+            className="text-xs font-medium uppercase mb-3"
+            style={{ color: "var(--color-success)", letterSpacing: "0.05em" }}
+          >
+            {tag}
+          </div>
+        )}
+        <blockquote className="text-sm text-foreground leading-relaxed flex-1">
+          "{quote}"
+        </blockquote>
+        <figcaption className="mt-5 text-sm">
+          <div className="font-medium text-foreground">{name}</div>
+          <div className="text-secondary">{role}</div>
+        </figcaption>
+      </div>
+      {image && (
+        <div className="aspect-[16/10] w-full bg-muted overflow-hidden border-t border-border">
+          <img src={image} alt="" className="w-full h-full object-cover" />
         </div>
       )}
-      <blockquote className="text-sm text-foreground leading-relaxed flex-1">
-        "{quote}"
-      </blockquote>
-      <figcaption className="mt-5 text-sm">
-        <div className="font-medium text-foreground">{name}</div>
-        <div className="text-secondary">{role}</div>
-      </figcaption>
     </figure>
   );
 }
