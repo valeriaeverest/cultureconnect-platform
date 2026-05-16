@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Check, ChevronDown, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -55,7 +55,6 @@ const NEXT_STEPS = [
 ];
 
 function ConfirmedPage() {
-  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-background">
@@ -137,10 +136,10 @@ function ConfirmedPage() {
 
         <div className="mt-12 flex flex-col items-center">
           <Button
-            onClick={() => navigate({ to: "/impact" })}
+            asChild
             className="h-12 bg-primary px-8 text-base font-medium text-primary-foreground hover:bg-primary-hover"
           >
-            View your impact dashboard →
+            <a href="/impact">View your impact dashboard →</a>
           </Button>
           <p className="mt-6 text-sm text-secondary">
             Manage your booking anytime in your dashboard.
