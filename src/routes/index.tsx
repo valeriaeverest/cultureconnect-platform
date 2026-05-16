@@ -454,7 +454,8 @@ function LandingPage() {
     <div className="min-h-screen bg-background flex flex-col page-fade">
       <Nav />
       <main className="flex-1">
-        <section className="px-6 pt-20 pb-16 text-center">
+        <section className="relative px-6 pt-20 pb-16 text-center">
+          <HeroGallery />
           <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
             Stop wasting budget on uninspired happy hours. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
           </p>
