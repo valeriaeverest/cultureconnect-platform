@@ -127,12 +127,15 @@ const BENCHMARKS = [
 ];
 
 function MetricCard({ m }: { m: (typeof METRICS)[number] }) {
+  const { prefix, num, suffix, decimals } = parseMetric(m.value);
+  const current = useCountUp(num, 400, decimals);
+  const display = `${prefix}${current.toFixed(decimals)}${suffix}`;
   return (
     <div className="rounded-lg border bg-card p-6 shadow-sm">
       <div className="text-sm font-medium text-secondary">{m.title}</div>
       <div className="mt-3 flex items-center gap-2">
-        <div className="text-[36px] font-semibold leading-none tracking-tight text-foreground">
-          {m.value}
+        <div className="text-[36px] font-semibold leading-none tracking-tight text-foreground tabular-nums">
+          {display}
         </div>
         {m.trend && (
           <span
