@@ -13,6 +13,7 @@ import { Route as SigninRouteImport } from './routes/signin'
 import { Route as MatchesRouteImport } from './routes/matches'
 import { Route as IntakeRouteImport } from './routes/intake'
 import { Route as CreateAccountRouteImport } from './routes/create-account'
+import { Route as ConfirmedRouteImport } from './routes/confirmed'
 import { Route as BookRouteImport } from './routes/book'
 import { Route as IndexRouteImport } from './routes/index'
 
@@ -36,6 +37,11 @@ const CreateAccountRoute = CreateAccountRouteImport.update({
   path: '/create-account',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConfirmedRoute = ConfirmedRouteImport.update({
+  id: '/confirmed',
+  path: '/confirmed',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BookRoute = BookRouteImport.update({
   id: '/book',
   path: '/book',
@@ -50,6 +56,7 @@ const IndexRoute = IndexRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
@@ -58,6 +65,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
@@ -67,6 +75,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/book': typeof BookRoute
+  '/confirmed': typeof ConfirmedRoute
   '/create-account': typeof CreateAccountRoute
   '/intake': typeof IntakeRoute
   '/matches': typeof MatchesRoute
@@ -77,16 +86,25 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/book'
+    | '/confirmed'
     | '/create-account'
     | '/intake'
     | '/matches'
     | '/signin'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/book' | '/create-account' | '/intake' | '/matches' | '/signin'
+  to:
+    | '/'
+    | '/book'
+    | '/confirmed'
+    | '/create-account'
+    | '/intake'
+    | '/matches'
+    | '/signin'
   id:
     | '__root__'
     | '/'
     | '/book'
+    | '/confirmed'
     | '/create-account'
     | '/intake'
     | '/matches'
@@ -96,6 +114,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   BookRoute: typeof BookRoute
+  ConfirmedRoute: typeof ConfirmedRoute
   CreateAccountRoute: typeof CreateAccountRoute
   IntakeRoute: typeof IntakeRoute
   MatchesRoute: typeof MatchesRoute
@@ -132,6 +151,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CreateAccountRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/confirmed': {
+      id: '/confirmed'
+      path: '/confirmed'
+      fullPath: '/confirmed'
+      preLoaderRoute: typeof ConfirmedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/book': {
       id: '/book'
       path: '/book'
@@ -152,6 +178,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   BookRoute: BookRoute,
+  ConfirmedRoute: ConfirmedRoute,
   CreateAccountRoute: CreateAccountRoute,
   IntakeRoute: IntakeRoute,
   MatchesRoute: MatchesRoute,
@@ -160,3 +187,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
