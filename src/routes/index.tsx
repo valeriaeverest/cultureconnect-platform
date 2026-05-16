@@ -86,6 +86,12 @@ function Nav() {
             How it works
           </a>
           <Link
+            to="/case-studies"
+            className="text-sm text-secondary hover:text-foreground transition-colors"
+          >
+            Case studies
+          </Link>
+          <Link
             to="/vendor-apply"
             className="text-sm text-secondary hover:text-foreground transition-colors"
           >
