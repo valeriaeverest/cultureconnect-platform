@@ -66,13 +66,13 @@ function CustomerForm() {
         Welcome to Lattice
       </h1>
 
-      <Link
-        to="/intake"
+      <a
+        href="/intake"
         className="block text-base font-medium mb-6 transition-colors"
         style={{ color: "var(--color-primary)" }}
       >
         See your match and budget — no account needed →
-      </Link>
+      </a>
 
       <div className="flex items-center gap-3 my-6">
         <div className="flex-1 h-px bg-border" />
