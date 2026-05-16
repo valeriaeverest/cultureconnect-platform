@@ -539,6 +539,8 @@ function LandingPage() {
           </div>
         </section>
 
+        <PhotoGallery />
+
         <Features />
         <Testimonials />
 
