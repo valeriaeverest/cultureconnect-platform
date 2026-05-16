@@ -1,3 +1,4 @@
+import { BrandMark } from "@/components/brand-mark";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { Pencil, Check } from "lucide-react";
@@ -79,9 +80,7 @@ function Nav() {
   return (
     <header className="bg-white border-b border-border">
       <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <Link to="/" className="text-lg font-semibold tracking-tight text-foreground">
-          Lattice
-        </Link>
+        <BrandMark />
         <Link to="/signin" search={{ tab: "customer" }} className="text-sm text-secondary hover:text-foreground transition-colors">
           Sign in
         </Link>
