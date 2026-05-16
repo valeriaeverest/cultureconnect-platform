@@ -65,6 +65,12 @@ const NEXT_STEPS = [
 ];
 
 function ConfirmedPage() {
+  const [matchId, setMatchId] = useState<number>(3);
+  useEffect(() => {
+    const id = loadSelectedMatch();
+    if (id && HERO_BY_MATCH[id]) setMatchId(id);
+  }, []);
+  const heroSrc = HERO_BY_MATCH[matchId];
 
   return (
     <div className="min-h-screen bg-background">
