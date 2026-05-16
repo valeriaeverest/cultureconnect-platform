@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import {
   defaultIntake,
@@ -53,15 +53,27 @@ function Nav() {
           <a href="#how" className="text-sm text-secondary hover:text-foreground transition-colors">
             How it works
           </a>
-          <a href="#artists" className="text-sm text-secondary hover:text-foreground transition-colors">
+          <Link
+            to="/signin"
+            search={{ tab: "artist" }}
+            className="text-sm text-secondary hover:text-foreground transition-colors"
+          >
             For artists
-          </a>
-          <a href="#signin" className="text-sm text-secondary hover:text-foreground transition-colors">
+          </Link>
+          <Link
+            to="/signin"
+            search={{ tab: "customer" }}
+            className="text-sm text-secondary hover:text-foreground transition-colors"
+          >
             Sign in
-          </a>
-          <button className="text-sm font-medium px-3.5 py-1.5 rounded-md border border-border text-foreground hover:bg-muted transition-colors">
+          </Link>
+          <Link
+            to="/signin"
+            search={{ tab: "customer" }}
+            className="text-sm font-medium px-3.5 py-1.5 rounded-md border border-border text-foreground hover:bg-muted transition-colors"
+          >
             Get started
-          </button>
+          </Link>
         </nav>
       </div>
     </header>
