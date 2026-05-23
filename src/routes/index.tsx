@@ -115,17 +115,17 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lattice — Match. Book. Measure." },
+      { title: "Lattice — Turn Event Spend Into Retention Strategy" },
       {
         name: "description",
         content:
-          "The marketplace for company culture events. Match with vetted local artists, book instantly, done.",
+          "The B2B culture platform that connects teams to local art, music, and food — then measures the ROI on retention and connection.",
       },
-      { property: "og:title", content: "Lattice — Match. Book. Measure." },
+      { property: "og:title", content: "Lattice — Turn Event Spend Into Retention Strategy" },
       {
         property: "og:description",
         content:
-          "Match your team with vetted local artists, musicians, food vendors, and breweries — instantly.",
+          "Match your team with vetted local artists, musicians, food vendors, and breweries. Measure retention impact.",
       },
     ],
   }),
