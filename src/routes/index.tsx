@@ -1,9 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useCallback } from "react";
 import { Navbar } from "../components/navbar";
 import { vendors, cities, teamSizes, timeSlots, vibeTags } from "../lib/data";
 import type { Vendor } from "../lib/data";
 import { Star, Check, MapPin, DollarSign, Clock } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
@@ -16,7 +17,6 @@ function LandingPage() {
       <main className="pt-16">
         <HeroSection />
         <TrustBar />
-        <IntakeFormSection />
       </main>
       <Footer />
     </div>
@@ -25,37 +25,41 @@ function LandingPage() {
 
 function HeroSection() {
   return (
-    <section className="px-4 pt-20 pb-16 text-center max-w-4xl mx-auto">
+    <section className="px-4 pt-24 pb-20 text-center max-w-4xl mx-auto">
       <h1 className="text-5xl md:text-7xl font-serif text-ink leading-[1.1] tracking-tight">
-        Culture events that actually move the needle.
+        Turn event spend into retention strategy.
       </h1>
       <p className="mt-6 text-lg text-warm-gray max-w-2xl mx-auto font-sans">
-        Book vetted local vendors — musicians, food trucks, artists, wellness providers — and
-        track the impact on employee morale over time.
+        A culture-focused B2B platform that transforms employee events into measurable
+        retention, engagement, and local-economy impact.
       </p>
-      <a
-        href="#intake-form"
-        className="inline-flex items-center justify-center mt-8 rounded-full bg-terracotta px-8 py-3.5 text-base font-medium text-white transition-colors hover:bg-[#A8401F]"
+      <Link
+        to="/dashboard"
+        className="inline-flex items-center justify-center mt-10 rounded-full bg-terracotta px-10 py-4 text-lg font-semibold text-white shadow-lg shadow-terracotta/30 transition-all hover:bg-[#A8401F] hover:scale-[1.02]"
       >
-        Get matched in under 2 minutes
-      </a>
+        Launch CultureConnect Live Demo →
+      </Link>
+      <p className="mt-4 text-xs text-warm-gray font-sans uppercase tracking-wider">
+        No signup · Instant access · Live mock data
+      </p>
     </section>
   );
 }
 
 function TrustBar() {
   const stats = [
-    { value: "400+", label: "Vetted vendors" },
-    { value: "<2 min", label: "Time to match" },
-    { value: "68", label: "Average NPS" },
+    { value: "87%", label: "Employee engagement" },
+    { value: "+14%", label: "Retention lift" },
+    { value: "$842K", label: "Annual savings" },
+    { value: "1,284", label: "Employees reached" },
   ];
 
   return (
-    <section className="border-y border-border bg-card/50 py-8">
-      <div className="max-w-4xl mx-auto flex flex-wrap justify-center gap-12 px-4">
+    <section className="border-y border-border bg-card/50 py-10">
+      <div className="max-w-5xl mx-auto flex flex-wrap justify-center gap-12 px-4">
         {stats.map((stat) => (
           <div key={stat.label} className="text-center">
-            <div className="text-3xl font-serif text-ink">{stat.value}</div>
+            <div className="text-4xl font-serif text-terracotta">{stat.value}</div>
             <div className="text-sm text-warm-gray font-sans mt-1">{stat.label}</div>
           </div>
         ))}
@@ -63,6 +67,7 @@ function TrustBar() {
     </section>
   );
 }
+
 
 function IntakeFormSection() {
   const [formData, setFormData] = useState({
