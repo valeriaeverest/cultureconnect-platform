@@ -1,7 +1,7 @@
 import { BrandMark } from "@/components/brand-mark";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
-import { ArrowUpRight, ChevronDown, TrendingUp } from "lucide-react";
+import { ArrowUpRight, ChevronDown, TrendingUp, CheckCircle2, Circle, DollarSign, Users, Building2, HeartHandshake, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 // Animate a number from 0 to target over `duration` ms.
