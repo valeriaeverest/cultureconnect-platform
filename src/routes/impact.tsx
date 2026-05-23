@@ -707,6 +707,17 @@ function ImpactPage() {
           <NpsHistoryChart />
         </section>
 
+        {/* Department engagement */}
+        <section className="mt-12">
+          <DepartmentBreakdown />
+        </section>
+
+        {/* 12-month retention curve */}
+        <section className="mt-12">
+          <RetentionCurveChart />
+        </section>
+
+
         {/* CTAs */}
         <section className="mt-16">
           <div className="flex flex-col gap-3 sm:flex-row">
