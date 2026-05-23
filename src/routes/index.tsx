@@ -147,51 +147,9 @@ const TIME_SLOTS: { id: TimeSlot; label: string }[] = [
   { id: "evening", label: "🌙 Evening Gala · 6:00 PM+" },
 ];
 
+import { DemoNav } from "@/components/demo-nav";
 function Nav() {
-  return (
-    <header className="bg-white border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <BrandMark />
-        <nav className="flex items-center gap-7">
-          <a href="#how" className="text-sm text-secondary hover:text-foreground transition-colors">
-            How it works
-          </a>
-          <Link
-            to="/case-studies"
-            className="text-sm text-secondary hover:text-foreground transition-colors"
-          >
-            Case studies
-          </Link>
-          <Link
-            to="/pricing"
-            className="text-sm text-secondary hover:text-foreground transition-colors"
-          >
-            Pricing
-          </Link>
-          <Link
-            to="/vendor-apply"
-            className="text-sm text-secondary hover:text-foreground transition-colors"
-          >
-            For artists
-          </Link>
-          <Link
-            to="/signin"
-            search={{ tab: "customer" }}
-            className="text-sm text-secondary hover:text-foreground transition-colors"
-          >
-            Sign in
-          </Link>
-          <Link
-            to="/signin"
-            search={{ tab: "customer" }}
-            className="text-sm font-medium px-3.5 py-1.5 rounded-md border border-border text-foreground hover:bg-muted transition-colors"
-          >
-            Get started
-          </Link>
-        </nav>
-      </div>
-    </header>
-  );
+  return <DemoNav />;
 }
 
 function IntakeCard() {
@@ -562,6 +520,21 @@ function LandingPage() {
             <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
               Stop wasting budget on uninspiring corporate events. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
             </p>
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
+              <Link
+                to="/impact"
+                className="inline-flex items-center justify-center h-12 px-7 rounded-md font-medium text-white transition-colors"
+                style={{ backgroundColor: "var(--color-primary)" }}
+              >
+                View Demo →
+              </Link>
+              <Link
+                to="/intake"
+                className="inline-flex items-center justify-center h-12 px-7 rounded-md font-medium text-foreground border border-border bg-white hover:bg-muted transition-colors"
+              >
+                Try the intake flow
+              </Link>
+            </div>
             <HeroGallery />
             <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
               Match. Book. Measure.
