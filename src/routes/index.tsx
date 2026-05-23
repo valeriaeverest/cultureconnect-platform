@@ -467,10 +467,10 @@ function Testimonials() {
       <div className="max-w-6xl mx-auto px-6 py-24">
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.05em] font-medium mb-3" style={{ color: "var(--color-success)" }}>
-            People teams love Lattice
+            People teams
           </p>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em]">
-            Measurable wins, in their words.
+            Retention, connection, velocity.
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -481,10 +481,10 @@ function Testimonials() {
 
         <div className="text-center mt-24 mb-12">
           <p className="text-xs uppercase tracking-[0.05em] font-medium mb-3" style={{ color: "var(--color-success)" }}>
-            What our creative partners are saying
+            Creative partners
           </p>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em]">
-            Built for the artists, too.
+            Built for artists, too.
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
