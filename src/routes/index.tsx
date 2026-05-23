@@ -147,51 +147,9 @@ const TIME_SLOTS: { id: TimeSlot; label: string }[] = [
   { id: "evening", label: "🌙 Evening Gala · 6:00 PM+" },
 ];
 
+import { DemoNav } from "@/components/demo-nav";
 function Nav() {
-  return (
-    <header className="bg-white border-b border-border">
-      <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <BrandMark />
-        <nav className="flex items-center gap-7">
-          <a href="#how" className="text-sm text-secondary hover:text-foreground transition-colors">
-            How it works
-          </a>
-          <Link
-            to="/case-studies"
-            className="text-sm text-secondary hover:text-foreground transition-colors"
-          >
-            Case studies
-          </Link>
-          <Link
-            to="/pricing"
-            className="text-sm text-secondary hover:text-foreground transition-colors"
-          >
-            Pricing
-          </Link>
-          <Link
-            to="/vendor-apply"
-            className="text-sm text-secondary hover:text-foreground transition-colors"
-          >
-            For artists
-          </Link>
-          <Link
-            to="/signin"
-            search={{ tab: "customer" }}
-            className="text-sm text-secondary hover:text-foreground transition-colors"
-          >
-            Sign in
-          </Link>
-          <Link
-            to="/signin"
-            search={{ tab: "customer" }}
-            className="text-sm font-medium px-3.5 py-1.5 rounded-md border border-border text-foreground hover:bg-muted transition-colors"
-          >
-            Get started
-          </Link>
-        </nav>
-      </div>
-    </header>
-  );
+  return <DemoNav />;
 }
 
 function IntakeCard() {
