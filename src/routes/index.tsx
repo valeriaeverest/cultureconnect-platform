@@ -358,42 +358,42 @@ function Features() {
 const CUSTOMER_TESTIMONIALS = [
   {
     quote:
-      "Our annual employee experience survey scores for 'Connection to Company Culture' jumped by 34% after our first quarter with Lattice. Instead of the usual generic catering, our teams were talking about the local screen-printer who made our event shirts and the jazz trio playing in the lobby. People feel genuinely better about working here knowing our event budgets are directly funding small businesses in our own neighborhood.",
+      "Our 'Connection to Company Culture' scores jumped 34% after one quarter. Employees talked about the local artists for weeks.",
     name: "Marcus Vance",
-    role: "VP of People & Culture, Apex Analytics (500+ employees)",
-    tag: "The Culture Champion",
+    role: "VP of People & Culture, Apex Analytics",
+    tag: "Retention Win",
     image: ct1,
   },
   {
     quote:
-      "In tech, retention is everything. We started using Lattice to curate our monthly team syncs with local culinary pop-ups and emerging artists. Our team doesn't just show up for the food; they show up for the community. Our voluntary turnover dropped to an all-time low this year, and in exit interviews, our vibrant, hyper-local workplace culture is consistently cited as a top reason people stay.",
+      "Voluntary turnover hit an all-time low. In exit interviews, our local culture experiences are cited as a top reason people stay.",
     name: "Elena Rostova",
-    role: "Co-Founder & COO, Voxel Creative (80 employees)",
-    tag: "The Retention Win",
+    role: "Co-Founder & COO, Voxel Creative",
+    tag: "Retention Win",
     image: ct2,
   },
   {
     quote:
-      "Lattice completely transformed how we think about corporate social responsibility. Why donate to abstract funds when we can directly employ local Latinx-owned breweries and independent food trucks for our heritage celebrations? Our employees feel an immense sense of pride working for an organization that visibly breathes life back into the local economy.",
+      "We replaced abstract CSR donations with direct employment of local Latinx-owned breweries. Pride across the company soared.",
     name: "David Chen",
-    role: "Head of Employee Experience, Meridian FinTech (1,200 employees)",
-    tag: "The Local Impact Driver",
+    role: "Head of Employee Experience, Meridian FinTech",
+    tag: "Local Impact",
     image: ct3,
   },
   {
     quote:
-      "There is a direct line between employee happiness and output. Before Lattice, our hybrid teams felt disconnected, and 'Zoom fatigue' was tanking morale. The curated, sensory-rich experiences Lattice brings right into our office courtyard have revitalized our team's energy. Post-event weeks always show a measurable spike in project velocity and cross-department collaboration.",
+      "Post-event weeks show measurable spikes in project velocity and cross-department collaboration. It's not fluff — it's data.",
     name: "Sarah Jenkins",
-    role: "Director of Operations, Shift Logistics (250 employees)",
-    tag: "The Productivity Booster",
+    role: "Director of Operations, Shift Logistics",
+    tag: "Productivity Lift",
     image: ct4,
   },
   {
     quote:
-      "As a rapidly growing company, onboarding remote hires into a physical office can be awkward. Lattice removes that barrier entirely. Their geolocation-based database allowed us to curate an intimate acoustic set with a local singer-songwriter for our latest cohort onboarding week. 98% of our new hires reported feeling 'instantly connected' to the company mission on day one.",
+      "98% of new hires reported feeling 'instantly connected' to our mission after a curated local onboarding experience.",
     name: "Amara Okafor",
-    role: "Talent Acquisition Lead, Nebula Health (150 employees)",
-    tag: "The Fast-Growing Scale-Up",
+    role: "Talent Acquisition Lead, Nebula Health",
+    tag: "Onboarding Edge",
     image: ct5,
   },
 ];
@@ -401,28 +401,28 @@ const CUSTOMER_TESTIMONIALS = [
 const ARTIST_TESTIMONIALS = [
   {
     quote:
-      "Before Lattice, I was spending 60% of my week cold-emailing venues and chasing down late invoice payments. Now, I just open the platform and accept bookings. Lattice has streamlined my schedule to the point where I'm performing 3 to 4 times a week at high-end corporate spaces. It's consistent, reliable income that actually allows me to focus on my music.",
+      "I went from cold-emailing venues to 3–4 paid corporate gigs a week. Lattice is consistent, reliable income.",
     name: "Maya Lin",
     role: "Indie-Folk Singer-Songwriter",
     image: at1,
   },
   {
     quote:
-      "Lattice completely handles the marketing and logistics for us. As a small food truck business, we don't have the budget for big ad campaigns, but Lattice's geolocation database puts us right in front of corporate clients looking for local flavor. They match us with companies that perfectly fit our vibe and let us do what we do best: cook incredible food.",
+      "No ad budget needed. Lattice puts us in front of corporate clients who already want our vibe.",
     name: "Carlos & Elena Ruiz",
     role: "Co-Owners, Taquería El Sol",
     image: at2,
   },
   {
     quote:
-      "The community awareness I've gained through Lattice has been a game-changer. I did a live-painting experience for a corporate anniversary event last month, and three of the executives liked my style so much they commissioned private pieces for their homes. Lattice bridges the gap between independent creatives and local businesses that genuinely want to invest in us.",
+      "A live-painting gig led to three executive commissions. Lattice bridges the gap between artists and real buyers.",
     name: "Jordan Brooks",
     role: "Muralist & Fine Artist",
     image: at3,
   },
   {
     quote:
-      "We absolutely love working with Lattice customers. The corporate teams we meet are so engaged, respectful, and excited to support local, diverse businesses. During our interactive espresso and pastry pop-ups, the employees always want to hear our story. It's an incredibly uplifting environment, and the financial ROI for our business has been phenomenal.",
+      "Corporate teams are engaged, respectful, and genuinely want to hear our story. The financial ROI has been phenomenal.",
     name: "Sofia Amadou",
     role: "Founder, Café de Cacao",
     image: at4,
