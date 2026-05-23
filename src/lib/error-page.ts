@@ -1,30 +1,58 @@
+// Renders a branded error page for SSR failures
+
 export function renderErrorPage(): string {
-  return `<!doctype html>
+  return `<!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <title>This page didn't load</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <style>
-      body { font: 15px/1.5 system-ui, -apple-system, sans-serif; background: #fafafa; color: #111; display: grid; place-items: center; min-height: 100vh; margin: 0; padding: 1.5rem; }
-      .card { max-width: 28rem; width: 100%; text-align: center; padding: 2rem; }
-      h1 { font-size: 1.25rem; margin: 0 0 0.5rem; }
-      p { color: #4b5563; margin: 0 0 1.5rem; }
-      .actions { display: flex; gap: 0.5rem; justify-content: center; flex-wrap: wrap; }
-      a, button { padding: 0.5rem 1rem; border-radius: 0.375rem; font: inherit; cursor: pointer; text-decoration: none; border: 1px solid transparent; }
-      .primary { background: #111; color: #fff; }
-      .secondary { background: #fff; color: #111; border-color: #d1d5db; }
-    </style>
-  </head>
-  <body>
-    <div class="card">
-      <h1>This page didn't load</h1>
-      <p>Something went wrong on our end. You can try refreshing or head back home.</p>
-      <div class="actions">
-        <button class="primary" onclick="location.reload()">Try again</button>
-        <a class="secondary" href="/">Go home</a>
-      </div>
-    </div>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Something went wrong — CultureConnect</title>
+  <style>
+    body {
+      font-family: "DM Sans", system-ui, sans-serif;
+      background: #F5F0E8;
+      color: #1A1712;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      margin: 0;
+      padding: 1rem;
+    }
+    .container {
+      max-width: 420px;
+      text-align: center;
+    }
+    h1 {
+      font-family: "Instrument Serif", Georgia, serif;
+      font-size: 2rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+    }
+    p {
+      color: #8B8178;
+      font-size: 0.875rem;
+      margin-bottom: 1.5rem;
+    }
+    a {
+      display: inline-block;
+      background: #C8502A;
+      color: white;
+      padding: 0.625rem 1.5rem;
+      border-radius: 9999px;
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+    a:hover { background: #A8401F; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Something went wrong</h1>
+    <p>We hit an unexpected error. Please try refreshing the page or come back later.</p>
+    <a href="/">Go home</a>
+  </div>
+</body>
 </html>`;
 }

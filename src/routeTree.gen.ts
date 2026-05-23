@@ -9,66 +9,22 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as VendorApplyRouteImport } from './routes/vendor-apply'
-import { Route as SigninRouteImport } from './routes/signin'
-import { Route as PricingRouteImport } from './routes/pricing'
-import { Route as MatchesRouteImport } from './routes/matches'
-import { Route as IntakeRouteImport } from './routes/intake'
-import { Route as ImpactRouteImport } from './routes/impact'
-import { Route as CreateAccountRouteImport } from './routes/create-account'
-import { Route as ConfirmedRouteImport } from './routes/confirmed'
-import { Route as CaseStudiesRouteImport } from './routes/case-studies'
-import { Route as BookRouteImport } from './routes/book'
+import { Route as SignupRouteImport } from './routes/signup'
+import { Route as LoginRouteImport } from './routes/login'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as VendorsIndexRouteImport } from './routes/vendors.index'
+import { Route as DashboardIndexRouteImport } from './routes/dashboard.index'
+import { Route as VendorsVendorIdRouteImport } from './routes/vendors.$vendorId'
+import { Route as DashboardAnalyticsRouteImport } from './routes/dashboard.analytics'
 
-const VendorApplyRoute = VendorApplyRouteImport.update({
-  id: '/vendor-apply',
-  path: '/vendor-apply',
+const SignupRoute = SignupRouteImport.update({
+  id: '/signup',
+  path: '/signup',
   getParentRoute: () => rootRouteImport,
 } as any)
-const SigninRoute = SigninRouteImport.update({
-  id: '/signin',
-  path: '/signin',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PricingRoute = PricingRouteImport.update({
-  id: '/pricing',
-  path: '/pricing',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const MatchesRoute = MatchesRouteImport.update({
-  id: '/matches',
-  path: '/matches',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const IntakeRoute = IntakeRouteImport.update({
-  id: '/intake',
-  path: '/intake',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ImpactRoute = ImpactRouteImport.update({
-  id: '/impact',
-  path: '/impact',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CreateAccountRoute = CreateAccountRouteImport.update({
-  id: '/create-account',
-  path: '/create-account',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ConfirmedRoute = ConfirmedRouteImport.update({
-  id: '/confirmed',
-  path: '/confirmed',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const CaseStudiesRoute = CaseStudiesRouteImport.update({
-  id: '/case-studies',
-  path: '/case-studies',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const BookRoute = BookRouteImport.update({
-  id: '/book',
-  path: '/book',
+const LoginRoute = LoginRouteImport.update({
+  id: '/login',
+  path: '/login',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -76,173 +32,109 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const VendorsIndexRoute = VendorsIndexRouteImport.update({
+  id: '/vendors/',
+  path: '/vendors/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardIndexRoute = DashboardIndexRouteImport.update({
+  id: '/dashboard/',
+  path: '/dashboard/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VendorsVendorIdRoute = VendorsVendorIdRouteImport.update({
+  id: '/vendors/$vendorId',
+  path: '/vendors/$vendorId',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardAnalyticsRoute = DashboardAnalyticsRouteImport.update({
+  id: '/dashboard/analytics',
+  path: '/dashboard/analytics',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '/book': typeof BookRoute
-  '/case-studies': typeof CaseStudiesRoute
-  '/confirmed': typeof ConfirmedRoute
-  '/create-account': typeof CreateAccountRoute
-  '/impact': typeof ImpactRoute
-  '/intake': typeof IntakeRoute
-  '/matches': typeof MatchesRoute
-  '/pricing': typeof PricingRoute
-  '/signin': typeof SigninRoute
-  '/vendor-apply': typeof VendorApplyRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/vendors/$vendorId': typeof VendorsVendorIdRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/vendors/': typeof VendorsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '/book': typeof BookRoute
-  '/case-studies': typeof CaseStudiesRoute
-  '/confirmed': typeof ConfirmedRoute
-  '/create-account': typeof CreateAccountRoute
-  '/impact': typeof ImpactRoute
-  '/intake': typeof IntakeRoute
-  '/matches': typeof MatchesRoute
-  '/pricing': typeof PricingRoute
-  '/signin': typeof SigninRoute
-  '/vendor-apply': typeof VendorApplyRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/vendors/$vendorId': typeof VendorsVendorIdRoute
+  '/dashboard': typeof DashboardIndexRoute
+  '/vendors': typeof VendorsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
-  '/book': typeof BookRoute
-  '/case-studies': typeof CaseStudiesRoute
-  '/confirmed': typeof ConfirmedRoute
-  '/create-account': typeof CreateAccountRoute
-  '/impact': typeof ImpactRoute
-  '/intake': typeof IntakeRoute
-  '/matches': typeof MatchesRoute
-  '/pricing': typeof PricingRoute
-  '/signin': typeof SigninRoute
-  '/vendor-apply': typeof VendorApplyRoute
+  '/login': typeof LoginRoute
+  '/signup': typeof SignupRoute
+  '/dashboard/analytics': typeof DashboardAnalyticsRoute
+  '/vendors/$vendorId': typeof VendorsVendorIdRoute
+  '/dashboard/': typeof DashboardIndexRoute
+  '/vendors/': typeof VendorsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
-    | '/book'
-    | '/case-studies'
-    | '/confirmed'
-    | '/create-account'
-    | '/impact'
-    | '/intake'
-    | '/matches'
-    | '/pricing'
-    | '/signin'
-    | '/vendor-apply'
+    | '/login'
+    | '/signup'
+    | '/dashboard/analytics'
+    | '/vendors/$vendorId'
+    | '/dashboard/'
+    | '/vendors/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
-    | '/book'
-    | '/case-studies'
-    | '/confirmed'
-    | '/create-account'
-    | '/impact'
-    | '/intake'
-    | '/matches'
-    | '/pricing'
-    | '/signin'
-    | '/vendor-apply'
+    | '/login'
+    | '/signup'
+    | '/dashboard/analytics'
+    | '/vendors/$vendorId'
+    | '/dashboard'
+    | '/vendors'
   id:
     | '__root__'
     | '/'
-    | '/book'
-    | '/case-studies'
-    | '/confirmed'
-    | '/create-account'
-    | '/impact'
-    | '/intake'
-    | '/matches'
-    | '/pricing'
-    | '/signin'
-    | '/vendor-apply'
+    | '/login'
+    | '/signup'
+    | '/dashboard/analytics'
+    | '/vendors/$vendorId'
+    | '/dashboard/'
+    | '/vendors/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  BookRoute: typeof BookRoute
-  CaseStudiesRoute: typeof CaseStudiesRoute
-  ConfirmedRoute: typeof ConfirmedRoute
-  CreateAccountRoute: typeof CreateAccountRoute
-  ImpactRoute: typeof ImpactRoute
-  IntakeRoute: typeof IntakeRoute
-  MatchesRoute: typeof MatchesRoute
-  PricingRoute: typeof PricingRoute
-  SigninRoute: typeof SigninRoute
-  VendorApplyRoute: typeof VendorApplyRoute
+  LoginRoute: typeof LoginRoute
+  SignupRoute: typeof SignupRoute
+  DashboardAnalyticsRoute: typeof DashboardAnalyticsRoute
+  VendorsVendorIdRoute: typeof VendorsVendorIdRoute
+  DashboardIndexRoute: typeof DashboardIndexRoute
+  VendorsIndexRoute: typeof VendorsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/vendor-apply': {
-      id: '/vendor-apply'
-      path: '/vendor-apply'
-      fullPath: '/vendor-apply'
-      preLoaderRoute: typeof VendorApplyRouteImport
+    '/signup': {
+      id: '/signup'
+      path: '/signup'
+      fullPath: '/signup'
+      preLoaderRoute: typeof SignupRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/signin': {
-      id: '/signin'
-      path: '/signin'
-      fullPath: '/signin'
-      preLoaderRoute: typeof SigninRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/pricing': {
-      id: '/pricing'
-      path: '/pricing'
-      fullPath: '/pricing'
-      preLoaderRoute: typeof PricingRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/matches': {
-      id: '/matches'
-      path: '/matches'
-      fullPath: '/matches'
-      preLoaderRoute: typeof MatchesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/intake': {
-      id: '/intake'
-      path: '/intake'
-      fullPath: '/intake'
-      preLoaderRoute: typeof IntakeRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/impact': {
-      id: '/impact'
-      path: '/impact'
-      fullPath: '/impact'
-      preLoaderRoute: typeof ImpactRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/create-account': {
-      id: '/create-account'
-      path: '/create-account'
-      fullPath: '/create-account'
-      preLoaderRoute: typeof CreateAccountRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/confirmed': {
-      id: '/confirmed'
-      path: '/confirmed'
-      fullPath: '/confirmed'
-      preLoaderRoute: typeof ConfirmedRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/case-studies': {
-      id: '/case-studies'
-      path: '/case-studies'
-      fullPath: '/case-studies'
-      preLoaderRoute: typeof CaseStudiesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/book': {
-      id: '/book'
-      path: '/book'
-      fullPath: '/book'
-      preLoaderRoute: typeof BookRouteImport
+    '/login': {
+      id: '/login'
+      path: '/login'
+      fullPath: '/login'
+      preLoaderRoute: typeof LoginRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -252,21 +144,45 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/vendors/': {
+      id: '/vendors/'
+      path: '/vendors'
+      fullPath: '/vendors/'
+      preLoaderRoute: typeof VendorsIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/': {
+      id: '/dashboard/'
+      path: '/dashboard'
+      fullPath: '/dashboard/'
+      preLoaderRoute: typeof DashboardIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/vendors/$vendorId': {
+      id: '/vendors/$vendorId'
+      path: '/vendors/$vendorId'
+      fullPath: '/vendors/$vendorId'
+      preLoaderRoute: typeof VendorsVendorIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard/analytics': {
+      id: '/dashboard/analytics'
+      path: '/dashboard/analytics'
+      fullPath: '/dashboard/analytics'
+      preLoaderRoute: typeof DashboardAnalyticsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  BookRoute: BookRoute,
-  CaseStudiesRoute: CaseStudiesRoute,
-  ConfirmedRoute: ConfirmedRoute,
-  CreateAccountRoute: CreateAccountRoute,
-  ImpactRoute: ImpactRoute,
-  IntakeRoute: IntakeRoute,
-  MatchesRoute: MatchesRoute,
-  PricingRoute: PricingRoute,
-  SigninRoute: SigninRoute,
-  VendorApplyRoute: VendorApplyRoute,
+  LoginRoute: LoginRoute,
+  SignupRoute: SignupRoute,
+  DashboardAnalyticsRoute: DashboardAnalyticsRoute,
+  VendorsVendorIdRoute: VendorsVendorIdRoute,
+  DashboardIndexRoute: DashboardIndexRoute,
+  VendorsIndexRoute: VendorsIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
