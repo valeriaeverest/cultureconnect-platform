@@ -46,9 +46,9 @@ function HeroGallery() {
 }
 
 const GALLERY_PHOTOS: { src: string; caption: string }[] = [
-  { src: gallery1, caption: "Curated local experiences mapped to your team's neighborhood." },
-  { src: gallery3, caption: "Perfect matches surfaced for your team — vetted artists, venues, and vendors." },
-  { src: gallery2, caption: "Event NPS climbing well above industry benchmarks, event after event." },
+  { src: gallery1, caption: "Local experiences mapped to your team's neighborhood." },
+  { src: gallery3, caption: "Vetted artists, venues, and vendors — matched to your culture." },
+  { src: gallery2, caption: "Event NPS that climbs above industry benchmarks, every time." },
 ];
 
 function PhotoGallery() {
