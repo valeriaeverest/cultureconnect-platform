@@ -46,9 +46,9 @@ function HeroGallery() {
 }
 
 const GALLERY_PHOTOS: { src: string; caption: string }[] = [
-  { src: gallery1, caption: "Curated local experiences mapped to your team's neighborhood." },
-  { src: gallery3, caption: "Perfect matches surfaced for your team — vetted artists, venues, and vendors." },
-  { src: gallery2, caption: "Event NPS climbing well above industry benchmarks, event after event." },
+  { src: gallery1, caption: "Local experiences mapped to your team's neighborhood." },
+  { src: gallery3, caption: "Vetted artists, venues, and vendors — matched to your culture." },
+  { src: gallery2, caption: "Event NPS that climbs above industry benchmarks, every time." },
 ];
 
 function PhotoGallery() {
@@ -115,17 +115,17 @@ import {
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Lattice — Match. Book. Measure." },
+      { title: "Lattice — Turn Event Spend Into Retention Strategy" },
       {
         name: "description",
         content:
-          "The marketplace for company culture events. Match with vetted local artists, book instantly, done.",
+          "The B2B culture platform that connects teams to local art, music, and food — then measures the ROI on retention and connection.",
       },
-      { property: "og:title", content: "Lattice — Match. Book. Measure." },
+      { property: "og:title", content: "Lattice — Turn Event Spend Into Retention Strategy" },
       {
         property: "og:description",
         content:
-          "Match your team with vetted local artists, musicians, food vendors, and breweries — instantly.",
+          "Match your team with vetted local artists, musicians, food vendors, and breweries. Measure retention impact.",
       },
     ],
   }),
@@ -317,20 +317,28 @@ function TrustStrip() {
 function Features() {
   const items = [
     {
-      title: "Culture-first matching",
-      body: "We start with your team's values, not a vendor list.",
+      title: "Match by culture, not category",
+      body: "We map your team's values to local creators — not just vendor lists.",
     },
     {
-      title: "Curated, not crowdsourced",
-      body: "Every artist on Lattice is personally vetted.",
+      title: "Vetted, never crowdsourced",
+      body: "Every artist is personally onboarded. Quality you can stake your brand on.",
     },
     {
-      title: "Personalized dashboard",
-      body: "Measurable impact via employee surveys to reflect retention goals.",
+      title: "ROI you can present",
+      body: "Built-in feedback loops turn event spend into retention metrics your board understands.",
     },
   ];
   return (
     <section id="how" className="max-w-6xl mx-auto px-6 py-24">
+      <div className="text-center mb-12">
+        <p className="text-xs uppercase tracking-[0.05em] font-medium mb-3" style={{ color: "var(--color-success)" }}>
+          How it works
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em]">
+          Three steps to measurable culture.
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {items.map((it) => (
           <div
@@ -350,42 +358,42 @@ function Features() {
 const CUSTOMER_TESTIMONIALS = [
   {
     quote:
-      "Our annual employee experience survey scores for 'Connection to Company Culture' jumped by 34% after our first quarter with Lattice. Instead of the usual generic catering, our teams were talking about the local screen-printer who made our event shirts and the jazz trio playing in the lobby. People feel genuinely better about working here knowing our event budgets are directly funding small businesses in our own neighborhood.",
+      "Our 'Connection to Company Culture' scores jumped 34% after one quarter. Employees talked about the local artists for weeks.",
     name: "Marcus Vance",
-    role: "VP of People & Culture, Apex Analytics (500+ employees)",
-    tag: "The Culture Champion",
+    role: "VP of People & Culture, Apex Analytics",
+    tag: "Retention Win",
     image: ct1,
   },
   {
     quote:
-      "In tech, retention is everything. We started using Lattice to curate our monthly team syncs with local culinary pop-ups and emerging artists. Our team doesn't just show up for the food; they show up for the community. Our voluntary turnover dropped to an all-time low this year, and in exit interviews, our vibrant, hyper-local workplace culture is consistently cited as a top reason people stay.",
+      "Voluntary turnover hit an all-time low. In exit interviews, our local culture experiences are cited as a top reason people stay.",
     name: "Elena Rostova",
-    role: "Co-Founder & COO, Voxel Creative (80 employees)",
-    tag: "The Retention Win",
+    role: "Co-Founder & COO, Voxel Creative",
+    tag: "Retention Win",
     image: ct2,
   },
   {
     quote:
-      "Lattice completely transformed how we think about corporate social responsibility. Why donate to abstract funds when we can directly employ local Latinx-owned breweries and independent food trucks for our heritage celebrations? Our employees feel an immense sense of pride working for an organization that visibly breathes life back into the local economy.",
+      "We replaced abstract CSR donations with direct employment of local Latinx-owned breweries. Pride across the company soared.",
     name: "David Chen",
-    role: "Head of Employee Experience, Meridian FinTech (1,200 employees)",
-    tag: "The Local Impact Driver",
+    role: "Head of Employee Experience, Meridian FinTech",
+    tag: "Local Impact",
     image: ct3,
   },
   {
     quote:
-      "There is a direct line between employee happiness and output. Before Lattice, our hybrid teams felt disconnected, and 'Zoom fatigue' was tanking morale. The curated, sensory-rich experiences Lattice brings right into our office courtyard have revitalized our team's energy. Post-event weeks always show a measurable spike in project velocity and cross-department collaboration.",
+      "Post-event weeks show measurable spikes in project velocity and cross-department collaboration. It's not fluff — it's data.",
     name: "Sarah Jenkins",
-    role: "Director of Operations, Shift Logistics (250 employees)",
-    tag: "The Productivity Booster",
+    role: "Director of Operations, Shift Logistics",
+    tag: "Productivity Lift",
     image: ct4,
   },
   {
     quote:
-      "As a rapidly growing company, onboarding remote hires into a physical office can be awkward. Lattice removes that barrier entirely. Their geolocation-based database allowed us to curate an intimate acoustic set with a local singer-songwriter for our latest cohort onboarding week. 98% of our new hires reported feeling 'instantly connected' to the company mission on day one.",
+      "98% of new hires reported feeling 'instantly connected' to our mission after a curated local onboarding experience.",
     name: "Amara Okafor",
-    role: "Talent Acquisition Lead, Nebula Health (150 employees)",
-    tag: "The Fast-Growing Scale-Up",
+    role: "Talent Acquisition Lead, Nebula Health",
+    tag: "Onboarding Edge",
     image: ct5,
   },
 ];
@@ -393,28 +401,28 @@ const CUSTOMER_TESTIMONIALS = [
 const ARTIST_TESTIMONIALS = [
   {
     quote:
-      "Before Lattice, I was spending 60% of my week cold-emailing venues and chasing down late invoice payments. Now, I just open the platform and accept bookings. Lattice has streamlined my schedule to the point where I'm performing 3 to 4 times a week at high-end corporate spaces. It's consistent, reliable income that actually allows me to focus on my music.",
+      "I went from cold-emailing venues to 3–4 paid corporate gigs a week. Lattice is consistent, reliable income.",
     name: "Maya Lin",
     role: "Indie-Folk Singer-Songwriter",
     image: at1,
   },
   {
     quote:
-      "Lattice completely handles the marketing and logistics for us. As a small food truck business, we don't have the budget for big ad campaigns, but Lattice's geolocation database puts us right in front of corporate clients looking for local flavor. They match us with companies that perfectly fit our vibe and let us do what we do best: cook incredible food.",
+      "No ad budget needed. Lattice puts us in front of corporate clients who already want our vibe.",
     name: "Carlos & Elena Ruiz",
     role: "Co-Owners, Taquería El Sol",
     image: at2,
   },
   {
     quote:
-      "The community awareness I've gained through Lattice has been a game-changer. I did a live-painting experience for a corporate anniversary event last month, and three of the executives liked my style so much they commissioned private pieces for their homes. Lattice bridges the gap between independent creatives and local businesses that genuinely want to invest in us.",
+      "A live-painting gig led to three executive commissions. Lattice bridges the gap between artists and real buyers.",
     name: "Jordan Brooks",
     role: "Muralist & Fine Artist",
     image: at3,
   },
   {
     quote:
-      "We absolutely love working with Lattice customers. The corporate teams we meet are so engaged, respectful, and excited to support local, diverse businesses. During our interactive espresso and pastry pop-ups, the employees always want to hear our story. It's an incredibly uplifting environment, and the financial ROI for our business has been phenomenal.",
+      "Corporate teams are engaged, respectful, and genuinely want to hear our story. The financial ROI has been phenomenal.",
     name: "Sofia Amadou",
     role: "Founder, Café de Cacao",
     image: at4,
@@ -459,10 +467,10 @@ function Testimonials() {
       <div className="max-w-6xl mx-auto px-6 py-24">
         <div className="text-center mb-12">
           <p className="text-xs uppercase tracking-[0.05em] font-medium mb-3" style={{ color: "var(--color-success)" }}>
-            People teams love Lattice
+            People teams
           </p>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em]">
-            Measurable wins, in their words.
+            Retention, connection, velocity.
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -473,10 +481,10 @@ function Testimonials() {
 
         <div className="text-center mt-24 mb-12">
           <p className="text-xs uppercase tracking-[0.05em] font-medium mb-3" style={{ color: "var(--color-success)" }}>
-            What our creative partners are saying
+            Creative partners
           </p>
           <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em]">
-            Built for the artists, too.
+            Built for artists, too.
           </h2>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -512,15 +520,15 @@ function LandingPage() {
     <div className="min-h-screen bg-background flex flex-col page-fade">
       <Nav />
       <main className="flex-1">
-        <section className="relative px-6 pt-20 pb-16 text-center">
+        <section className="relative px-6 pt-20 pb-12 text-center">
           <div className="relative">
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-[-0.015em] text-foreground max-w-4xl mx-auto mb-8">
-              Transforming corporate event spend into <em className="not-italic text-primary">measurable employee impact</em>.
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-[-0.015em] text-foreground max-w-4xl mx-auto mb-6">
+              Turn event spend into <em className="not-italic text-primary">retention strategy</em>.
             </h1>
-            <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
-              Stop wasting budget on uninspiring corporate events. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
+            <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-8">
+              Lattice is the culture-focused B2B platform that connects your people to local art, music, and food — then measures the ROI on connection, productivity, and retention.
             </p>
-            <div className="flex flex-wrap justify-center gap-3 mb-6">
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
               <Link
                 to="/impact"
                 className="inline-flex items-center justify-center h-12 px-7 rounded-md font-medium text-white transition-colors"
@@ -536,13 +544,6 @@ function LandingPage() {
               </Link>
             </div>
             <HeroGallery />
-            <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
-              Match. Book. Measure.
-            </h1>
-            <p className="mt-5 text-lg text-secondary max-w-[600px] mx-auto leading-relaxed">
-              The marketplace for company culture events. Match with vetted local
-              artists, book instantly, done.
-            </p>
 
             <div className="max-w-6xl mx-auto">
               <TrustStrip />
@@ -560,14 +561,14 @@ function LandingPage() {
         <section className="px-6 py-24 bg-background">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em] mb-4">
-              Ready to curate your next experience?
+              See the impact in minutes.
             </h2>
             <p className="text-base text-secondary mb-10 max-w-2xl mx-auto">
-              Tell us about your team and we'll match you with vetted local creators.
+              Run the intake, get matched, and surface ROI your CFO will love.
             </p>
             <IntakeCard />
             <p className="mt-5 text-sm text-secondary">
-              Curated from 400+ vetted local creatives. Free to explore — no account needed.
+              400+ vetted local creatives. Zero commitment.
             </p>
           </div>
         </section>
