@@ -44,29 +44,9 @@ export const Route = createFileRoute("/impact")({
   component: ImpactPage,
 });
 
+import { DemoNav } from "@/components/demo-nav";
 function Nav() {
-  return (
-    <header className="border-b bg-white">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <BrandMark />
-        <nav className="flex items-center gap-8 text-sm text-secondary">
-          <Link to="/signin" search={{ tab: "artist" }} className="hover:text-foreground">
-            For artists
-          </Link>
-          <button
-            type="button"
-            className="flex items-center gap-1.5 rounded-md px-2 py-1.5 text-sm font-medium text-foreground hover:bg-muted"
-          >
-            <span className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-xs font-semibold text-primary-foreground">
-              S
-            </span>
-            Sarah
-            <ChevronDown className="h-4 w-4 text-secondary" />
-          </button>
-        </nav>
-      </div>
-    </header>
-  );
+  return <DemoNav />;
 }
 
 const CHIPS = [
