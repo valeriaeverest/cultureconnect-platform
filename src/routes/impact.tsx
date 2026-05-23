@@ -269,6 +269,316 @@ function SentimentBar({ label, pct }: { label: string; pct: number }) {
   );
 }
 
+// ============== Demo: simulated "live" data layers ==============
+
+const PIPELINE = [
+  { label: "Intake received", done: true },
+  { label: "Vendors curated", done: true },
+  { label: "Match confirmed", done: true },
+  { label: "Pre-event survey sent", done: true },
+  { label: "Event delivered", done: true },
+  { label: "Post-event survey", done: true },
+  { label: "Impact report live", done: true, current: true },
+];
+
+const ROI_METRICS = [
+  {
+    title: "Estimated retention savings",
+    value: "$842K",
+    sub: "Annualized, based on 3.2% retention lift",
+    icon: DollarSign,
+    tint: "var(--success)",
+  },
+  {
+    title: "Employees reached",
+    value: "1,284",
+    sub: "Across 12 culture events YTD",
+    icon: Users,
+    tint: "var(--color-primary)",
+  },
+  {
+    title: "Invested in local economy",
+    value: "$214K",
+    sub: "Paid directly to vetted local creators",
+    icon: Building2,
+    tint: "#8b5cf6",
+  },
+  {
+    title: "Vendors activated",
+    value: "37",
+    sub: "Across 4 office hubs this quarter",
+    icon: HeartHandshake,
+    tint: "#ec4899",
+  },
+];
+
+const DEPARTMENTS = [
+  { name: "Engineering", reached: 412, pct: 91, lift: "+12 pts" },
+  { name: "Product & Design", reached: 188, pct: 96, lift: "+18 pts" },
+  { name: "Sales", reached: 246, pct: 84, lift: "+9 pts" },
+  { name: "Customer Success", reached: 174, pct: 89, lift: "+14 pts" },
+  { name: "Operations & G&A", reached: 132, pct: 78, lift: "+7 pts" },
+  { name: "Marketing", reached: 132, pct: 93, lift: "+15 pts" },
+];
+
+// 12-month forward retention curve: control cohort vs. Lattice-engaged cohort
+const RETENTION_CURVE = [
+  { m: "M0", control: 100, lattice: 100 },
+  { m: "M1", control: 98.4, lattice: 99.1 },
+  { m: "M2", control: 96.7, lattice: 98.5 },
+  { m: "M3", control: 94.8, lattice: 97.6 },
+  { m: "M4", control: 92.9, lattice: 96.9 },
+  { m: "M5", control: 91.1, lattice: 96.2 },
+  { m: "M6", control: 89.4, lattice: 95.4 },
+  { m: "M7", control: 87.8, lattice: 94.8 },
+  { m: "M8", control: 86.2, lattice: 94.1 },
+  { m: "M9", control: 84.7, lattice: 93.5 },
+  { m: "M10", control: 83.3, lattice: 92.9 },
+  { m: "M11", control: 82.0, lattice: 92.3 },
+  { m: "M12", control: 80.6, lattice: 91.7 },
+];
+
+function SuccessBanner() {
+  return (
+    <div
+      className="rounded-lg border p-5 flex items-start gap-4"
+      style={{
+        background: "color-mix(in oklab, var(--success) 8%, white)",
+        borderColor: "color-mix(in oklab, var(--success) 30%, white)",
+      }}
+    >
+      <span
+        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full"
+        style={{ background: "var(--success)" }}
+      >
+        <CheckCircle2 className="h-5 w-5 text-white" />
+      </span>
+      <div className="flex-1">
+        <div className="flex flex-wrap items-center gap-2">
+          <span
+            className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-white"
+            style={{ background: "var(--success)" }}
+          >
+            <Sparkles className="h-3 w-3" /> Live
+          </span>
+          <h2 className="text-base font-semibold text-foreground">
+            Your intake is in motion — curated matches are already booked.
+          </h2>
+        </div>
+        <p className="mt-1 text-sm text-secondary">
+          We've routed your brief to 3 vetted vendors, confirmed the lead match, and queued the
+          pre-event survey. The dashboard below is your live impact view.
+        </p>
+      </div>
+      <Button
+        variant="outline"
+        className="hidden h-9 px-4 text-xs font-medium sm:inline-flex"
+      >
+        Share with team
+      </Button>
+    </div>
+  );
+}
+
+function PipelineStrip() {
+  return (
+    <div className="rounded-lg border bg-card p-5 shadow-sm">
+      <div className="mb-4 flex items-center justify-between">
+        <h3 className="text-sm font-semibold text-foreground">Event lifecycle</h3>
+        <span className="text-xs font-medium text-secondary">
+          7 of 7 stages complete · auto-updated 2m ago
+        </span>
+      </div>
+      <ol className="grid grid-cols-2 gap-3 sm:grid-cols-4 lg:grid-cols-7">
+        {PIPELINE.map((p, i) => (
+          <li
+            key={p.label}
+            className="flex flex-col gap-1.5 rounded-md border p-3"
+            style={{
+              borderColor: p.current
+                ? "var(--color-primary)"
+                : "var(--color-border)",
+              background: p.current
+                ? "color-mix(in oklab, var(--color-primary) 6%, white)"
+                : "white",
+            }}
+          >
+            <div className="flex items-center gap-2">
+              {p.done ? (
+                <CheckCircle2 className="h-4 w-4" style={{ color: "var(--success)" }} />
+              ) : (
+                <Circle className="h-4 w-4 text-muted-foreground" />
+              )}
+              <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
+                Step {i + 1}
+              </span>
+            </div>
+            <div className="text-xs font-medium text-foreground leading-tight">{p.label}</div>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
+}
+
+function RoiCard({ m }: { m: (typeof ROI_METRICS)[number] }) {
+  const Icon = m.icon;
+  return (
+    <div className="rounded-lg border bg-card p-6 shadow-sm">
+      <div className="flex items-start justify-between">
+        <span
+          className="flex h-9 w-9 items-center justify-center rounded-md"
+          style={{ background: `color-mix(in oklab, ${m.tint} 14%, white)` }}
+        >
+          <Icon className="h-4.5 w-4.5" style={{ color: m.tint, width: 18, height: 18 }} />
+        </span>
+        <span
+          className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-semibold"
+          style={{
+            background: "color-mix(in oklab, var(--success) 12%, white)",
+            color: "var(--success)",
+          }}
+        >
+          <TrendingUp className="h-3 w-3" /> QoQ
+        </span>
+      </div>
+      <div className="mt-4 text-[32px] font-semibold leading-none tracking-tight text-foreground tabular-nums">
+        {m.value}
+      </div>
+      <div className="mt-1.5 text-sm font-medium text-foreground">{m.title}</div>
+      <div className="mt-1 text-xs text-secondary">{m.sub}</div>
+    </div>
+  );
+}
+
+function DepartmentBreakdown() {
+  return (
+    <div className="rounded-lg border bg-card p-6 shadow-sm">
+      <div className="flex items-end justify-between">
+        <div>
+          <h3 className="text-base font-semibold text-foreground">Engagement by department</h3>
+          <p className="mt-1 text-sm text-secondary">
+            % of department who attended and participated in the post-event survey.
+          </p>
+        </div>
+        <span className="text-xs font-medium text-secondary">1,284 reached YTD</span>
+      </div>
+      <div className="mt-5 space-y-4">
+        {DEPARTMENTS.map((d) => (
+          <div key={d.name}>
+            <div className="flex items-center justify-between text-sm">
+              <span className="font-medium text-foreground">{d.name}</span>
+              <span className="text-secondary">
+                <span className="tabular-nums text-foreground font-semibold">{d.reached}</span> reached
+                · <span className="font-semibold tabular-nums text-foreground">{d.pct}%</span>
+                <span
+                  className="ml-2 rounded-full px-2 py-0.5 text-[10px] font-semibold"
+                  style={{
+                    background: "color-mix(in oklab, var(--success) 12%, white)",
+                    color: "var(--success)",
+                  }}
+                >
+                  {d.lift}
+                </span>
+              </span>
+            </div>
+            <div className="mt-1.5 h-2 w-full overflow-hidden rounded-full bg-muted">
+              <div
+                className="h-full rounded-full"
+                style={{
+                  width: `${d.pct}%`,
+                  background: "var(--color-primary)",
+                  transition: "width 600ms ease-out",
+                }}
+              />
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+function RetentionCurveChart() {
+  const W = 760;
+  const H = 280;
+  const PAD = { top: 24, right: 24, bottom: 36, left: 40 };
+  const innerW = W - PAD.left - PAD.right;
+  const innerH = H - PAD.top - PAD.bottom;
+  const yMin = 75;
+  const yMax = 100;
+  const xFor = (i: number) => PAD.left + (i * innerW) / (RETENTION_CURVE.length - 1);
+  const yFor = (v: number) => PAD.top + innerH - ((v - yMin) / (yMax - yMin)) * innerH;
+  const yTicks = [75, 80, 85, 90, 95, 100];
+  const latticePath = RETENTION_CURVE.map((d, i) => `${i === 0 ? "M" : "L"}${xFor(i)},${yFor(d.lattice)}`).join(" ");
+  const controlPath = RETENTION_CURVE.map((d, i) => `${i === 0 ? "M" : "L"}${xFor(i)},${yFor(d.control)}`).join(" ");
+  // Build a filled "lift area" between control and lattice
+  const liftArea =
+    RETENTION_CURVE.map((d, i) => `${i === 0 ? "M" : "L"}${xFor(i)},${yFor(d.lattice)}`).join(" ") +
+    " " +
+    RETENTION_CURVE.slice().reverse().map((d, idx) => {
+      const i = RETENTION_CURVE.length - 1 - idx;
+      return `L${xFor(i)},${yFor(d.control)}`;
+    }).join(" ") +
+    " Z";
+  const last = RETENTION_CURVE.length - 1;
+  const lift = (RETENTION_CURVE[last].lattice - RETENTION_CURVE[last].control).toFixed(1);
+
+  return (
+    <div className="rounded-lg border bg-card p-6 shadow-sm">
+      <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+        <div>
+          <h3 className="text-base font-semibold text-foreground">12-month retention curve</h3>
+          <p className="mt-1 text-sm text-secondary">
+            Lattice-engaged cohort vs. control cohort. Modeled from 6 quarters of historical data.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-4 text-xs">
+          <span className="flex items-center gap-2 text-secondary">
+            <span className="inline-block h-2.5 w-4 rounded-sm" style={{ background: "var(--color-primary)" }} />
+            Lattice cohort
+          </span>
+          <span className="flex items-center gap-2 text-secondary">
+            <span className="inline-block h-0.5 w-4" style={{ background: "#94a3b8" }} />
+            Control cohort
+          </span>
+          <span
+            className="rounded-full px-2 py-0.5 text-[11px] font-semibold"
+            style={{
+              background: "color-mix(in oklab, var(--success) 12%, white)",
+              color: "var(--success)",
+            }}
+          >
+            +{lift} pts at month 12
+          </span>
+        </div>
+      </div>
+
+      <div className="mt-5 w-full overflow-x-auto">
+        <svg viewBox={`0 0 ${W} ${H}`} className="w-full" style={{ minWidth: 520 }}>
+          {yTicks.map((t) => (
+            <g key={t}>
+              <line x1={PAD.left} x2={W - PAD.right} y1={yFor(t)} y2={yFor(t)} stroke="#e2e8f0" strokeWidth={1} />
+              <text x={PAD.left - 8} y={yFor(t) + 4} textAnchor="end" fill="#94a3b8" style={{ fontSize: 11 }}>
+                {t}%
+              </text>
+            </g>
+          ))}
+          {RETENTION_CURVE.map((d, i) => (
+            <text key={d.m} x={xFor(i)} y={H - PAD.bottom + 18} textAnchor="middle" fill="#94a3b8" style={{ fontSize: 11 }}>
+              {d.m}
+            </text>
+          ))}
+          <path d={liftArea} fill="color-mix(in oklab, var(--success) 14%, white)" stroke="none" />
+          <path d={controlPath} fill="none" stroke="#94a3b8" strokeWidth={1.5} strokeDasharray="4 4" />
+          <path d={latticePath} fill="none" stroke="var(--color-primary)" strokeWidth={2.5} strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx={xFor(last)} cy={yFor(RETENTION_CURVE[last].lattice)} r={6} fill="var(--success)" stroke="#fff" strokeWidth={2} />
+        </svg>
+      </div>
+    </div>
+  );
+}
+
 function ImpactPage() {
   return (
     <div className="min-h-screen bg-background page-fade">
