@@ -317,20 +317,28 @@ function TrustStrip() {
 function Features() {
   const items = [
     {
-      title: "Culture-first matching",
-      body: "We start with your team's values, not a vendor list.",
+      title: "Match by culture, not category",
+      body: "We map your team's values to local creators — not just vendor lists.",
     },
     {
-      title: "Curated, not crowdsourced",
-      body: "Every artist on Lattice is personally vetted.",
+      title: "Vetted, never crowdsourced",
+      body: "Every artist is personally onboarded. Quality you can stake your brand on.",
     },
     {
-      title: "Personalized dashboard",
-      body: "Measurable impact via employee surveys to reflect retention goals.",
+      title: "ROI you can present",
+      body: "Built-in feedback loops turn event spend into retention metrics your board understands.",
     },
   ];
   return (
     <section id="how" className="max-w-6xl mx-auto px-6 py-24">
+      <div className="text-center mb-12">
+        <p className="text-xs uppercase tracking-[0.05em] font-medium mb-3" style={{ color: "var(--color-success)" }}>
+          How it works
+        </p>
+        <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em]">
+          Three steps to measurable culture.
+        </h2>
+      </div>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {items.map((it) => (
           <div
