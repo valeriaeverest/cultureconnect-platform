@@ -2,7 +2,7 @@
   "id": "FEAT-001",
   "type": "feat",
   "description": "Simplify intake form to mock success, populate dashboard with B2B ROI mock data, lock down navigation to only Landing/Intake/Dashboard, and polish landing page copy for contest demo",
-  "status": "in_progress",
+  "status": "completed",
   "steps": [
     "STEP 1 - SIMPLIFY INTAKE TO MOCK STATE: In src/routes/index.tsx, replace the handleSubmit function in IntakeFormSection. Instead of the multi-step loading animation and vendor matching logic, the form should: (a) call authStore.login() to auto-authenticate the user with company_name 'Acme Corp', (b) immediately navigate to /dashboard using TanStack Router's useNavigate(). Remove or hide the results section and the loading animation since the user will never see them. Keep the form fields visually intact so it looks professional during the demo.",
     "STEP 2 - POPULATE DASHBOARD WITH B2B ROI DATA: In src/lib/data.ts, update cultureScoreData and npsData arrays with higher, more impressive values showing clear upward trends. Add new exported data: (a) budgetAllocationData array for a pie/bar chart showing budget by category (Live Music: $45K, Local Food: $32K, Wellness: $18K, Team Building: $28K, Art & Crafts: $12K). (b) engagementMetrics object with: eventEngagement '87%', teamConnectionScore '+34%', employeeRetention '94%', roiMultiplier '3.2x'. Then in src/routes/dashboard.index.tsx: replace the static StatCard values with the new engagementMetrics data (Employee Event Engagement: 87%, Team Connection Score: +34%, Employee Retention Rate: 94%, ROI Multiplier: 3.2x). Add a third chart card showing 'Cultural Vendor Budget Allocation' using a BarChart from Recharts with budgetAllocationData. Update mockEvents with more realistic corporate data if needed. Remove the 'Recommended Vendors' section at the bottom to keep the dashboard focused on metrics.",
@@ -22,5 +22,5 @@
     "Run 'bun run build' to confirm TypeScript compiles and Vite bundles without errors"
   ],
   "blocked_reason": null,
-  "findings": ""
+  "findings": "Build passes cleanly. All 4 steps implemented in one commit. The useNavigate import was already available from @tanstack/react-router. BarChart and Bar were already available from recharts (no new dependencies needed)."
 }
