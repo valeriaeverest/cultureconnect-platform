@@ -512,15 +512,15 @@ function LandingPage() {
     <div className="min-h-screen bg-background flex flex-col page-fade">
       <Nav />
       <main className="flex-1">
-        <section className="relative px-6 pt-20 pb-16 text-center">
+        <section className="relative px-6 pt-20 pb-12 text-center">
           <div className="relative">
-            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-[-0.015em] text-foreground max-w-4xl mx-auto mb-8">
-              Transforming corporate event spend into <em className="not-italic text-primary">measurable employee impact</em>.
+            <h1 className="font-display text-5xl sm:text-6xl md:text-7xl leading-[1.05] tracking-[-0.015em] text-foreground max-w-4xl mx-auto mb-6">
+              Turn event spend into <em className="not-italic text-primary">retention strategy</em>.
             </h1>
-            <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
-              Stop wasting budget on uninspiring corporate events. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
+            <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-8">
+              Lattice is the culture-focused B2B platform that connects your people to local art, music, and food — then measures the ROI on connection, productivity, and retention.
             </p>
-            <div className="flex flex-wrap justify-center gap-3 mb-6">
+            <div className="flex flex-wrap justify-center gap-3 mb-10">
               <Link
                 to="/impact"
                 className="inline-flex items-center justify-center h-12 px-7 rounded-md font-medium text-white transition-colors"
@@ -536,13 +536,6 @@ function LandingPage() {
               </Link>
             </div>
             <HeroGallery />
-            <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
-              Match. Book. Measure.
-            </h1>
-            <p className="mt-5 text-lg text-secondary max-w-[600px] mx-auto leading-relaxed">
-              The marketplace for company culture events. Match with vetted local
-              artists, book instantly, done.
-            </p>
 
             <div className="max-w-6xl mx-auto">
               <TrustStrip />
@@ -560,14 +553,14 @@ function LandingPage() {
         <section className="px-6 py-24 bg-background">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl font-semibold tracking-[-0.02em] mb-4">
-              Ready to curate your next experience?
+              See the impact in minutes.
             </h2>
             <p className="text-base text-secondary mb-10 max-w-2xl mx-auto">
-              Tell us about your team and we'll match you with vetted local creators.
+              Run the intake, get matched, and surface ROI your CFO will love.
             </p>
             <IntakeCard />
             <p className="mt-5 text-sm text-secondary">
-              Curated from 400+ vetted local creatives. Free to explore — no account needed.
+              400+ vetted local creatives. Zero commitment.
             </p>
           </div>
         </section>
