@@ -1,21 +1,17 @@
+@import url("https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
 @import "tailwindcss" source(none);
 @source "../src";
 @import "tw-animate-css";
 
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap");
-
-.font-display {
-  font-family: "Instrument Serif", ui-serif, Georgia, serif;
-  font-feature-settings: "liga", "dlig";
-}
-
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
-  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
   --radius-sm: 4px;
-  --radius-md: 6px;
-  --radius-lg: 8px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -31,32 +27,31 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-success: var(--success);
   --color-border: var(--border);
   --color-input: var(--border);
   --color-ring: var(--primary);
-  --color-slate-deep: var(--slate-deep);
-  --color-chip: var(--chip);
+  --color-cream: #F5F0E8;
+  --color-ink: #1A1712;
+  --color-terracotta: #C8502A;
+  --color-terracotta-light: #D4734F;
+  --color-warm-gray: #8B8178;
 }
 
 :root {
-  --background: #fafafa;
-  --foreground: #0f172a;
-  --slate-deep: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --primary: #3b82f6;
-  --primary-foreground: #ffffff;
-  --primary-hover: #2563eb;
-  --secondary: #475569;
-  --secondary-foreground: #ffffff;
-  --muted: #f1f5f9;
-  --muted-foreground: #64748b;
-  --accent: #f1f5f9;
-  --accent-foreground: #0f172a;
-  --success: #14b8a6;
-  --border: #e2e8f0;
-  --chip: #f1f5f9;
+  --background: #F5F0E8;
+  --foreground: #1A1712;
+  --card: #FFFFFF;
+  --card-foreground: #1A1712;
+  --primary: #C8502A;
+  --primary-foreground: #FFFFFF;
+  --primary-hover: #A8401F;
+  --secondary: #1A1712;
+  --secondary-foreground: #F5F0E8;
+  --muted: #EDE8E0;
+  --muted-foreground: #8B8178;
+  --accent: #EDE8E0;
+  --accent-foreground: #1A1712;
+  --border: #D6CFC4;
   --radius: 8px;
 }
 
@@ -65,18 +60,19 @@
     border-color: var(--color-border);
   }
   html {
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
-    font-family: "Inter", ui-sans-serif, system-ui, sans-serif;
+    font-family: "DM Sans", ui-sans-serif, system-ui, sans-serif;
     line-height: 1.6;
     -webkit-font-smoothing: antialiased;
   }
   h1, h2, h3, h4, h5, h6 {
-    font-weight: 600;
-    letter-spacing: -0.02em;
+    font-family: "Instrument Serif", ui-serif, Georgia, serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
     color: var(--color-foreground);
   }
 }
@@ -87,12 +83,30 @@
 }
 .page-fade { animation: page-in 200ms ease-out both; }
 
-/* Custom map pin pulse for hovered match */
-.leaflet-marker-icon.pin-hover > div {
-  transform: scale(1.25);
-  transition: transform 160ms ease-out;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.45) !important;
+@keyframes pulse-dot {
+  0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
+  40% { transform: scale(1); opacity: 1; }
 }
-.leaflet-marker-icon > div {
-  transition: transform 160ms ease-out;
+
+.loading-dot {
+  animation: pulse-dot 1.4s infinite ease-in-out both;
+}
+.loading-dot:nth-child(1) { animation-delay: -0.32s; }
+.loading-dot:nth-child(2) { animation-delay: -0.16s; }
+.loading-dot:nth-child(3) { animation-delay: 0s; }
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-fade-up {
+  animation: fade-up 0.5s ease-out both;
+}
+
+@keyframes check-in {
+  from { transform: scale(0); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+.animate-check {
+  animation: check-in 0.3s ease-out both;
 }

@@ -12,17 +12,17 @@ import appCss from "../styles.css?url";
 
 function NotFoundComponent() {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-7xl font-bold text-foreground">404</h1>
-        <h2 className="mt-4 text-xl font-semibold text-foreground">Page not found</h2>
-        <p className="mt-2 text-sm text-muted-foreground">
+        <h1 className="text-7xl text-ink">404</h1>
+        <h2 className="mt-4 text-xl font-sans font-semibold text-ink">Page not found</h2>
+        <p className="mt-2 text-sm text-warm-gray font-sans">
           The page you're looking for doesn't exist or has been moved.
         </p>
         <div className="mt-6">
           <Link
             to="/"
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-md bg-terracotta px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-terracotta-light"
           >
             Go home
           </Link>
@@ -37,13 +37,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   const router = useRouter();
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background px-4">
+    <div className="flex min-h-screen items-center justify-center px-4">
       <div className="max-w-md text-center">
-        <h1 className="text-xl font-semibold tracking-tight text-foreground">
-          This page didn't load
+        <h1 className="text-xl font-sans font-semibold text-ink">
+          Something went wrong
         </h1>
-        <p className="mt-2 text-sm text-muted-foreground">
-          Something went wrong on our end. You can try refreshing or head back home.
+        <p className="mt-2 text-sm text-warm-gray font-sans">
+          We hit an unexpected error. Try refreshing or head back home.
         </p>
         <div className="mt-6 flex flex-wrap justify-center gap-2">
           <button
@@ -51,13 +51,13 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
               router.invalidate();
               reset();
             }}
-            className="inline-flex items-center justify-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90"
+            className="inline-flex items-center justify-center rounded-md bg-terracotta px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-terracotta-light"
           >
             Try again
           </button>
           <a
             href="/"
-            className="inline-flex items-center justify-center rounded-md border border-input bg-background px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-accent"
+            className="inline-flex items-center justify-center rounded-md border border-border bg-card px-4 py-2 text-sm font-medium text-ink transition-colors hover:bg-muted"
           >
             Go home
           </a>
@@ -72,24 +72,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Lattice" },
-      { name: "description", content: "Lattice is a B2B marketplace connecting companies with local artists, musicians, food vendors, and breweries for culture events." },
-      { name: "author", content: "Lovable" },
-      { property: "og:title", content: "Lattice" },
-      { property: "og:description", content: "Lattice is a B2B marketplace connecting companies with local artists, musicians, food vendors, and breweries for culture events." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
-      { name: "twitter:site", content: "@Lovable" },
-      { name: "twitter:title", content: "Lattice" },
-      { name: "twitter:description", content: "Lattice is a B2B marketplace connecting companies with local artists, musicians, food vendors, and breweries for culture events." },
-      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bdf8dbb8-e336-421a-953d-4b4642e061ae/id-preview-1144e61b--9926ff8a-3f96-486e-93b3-a90858e1a13c.lovable.app-1778956484296.png" },
-      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/bdf8dbb8-e336-421a-953d-4b4642e061ae/id-preview-1144e61b--9926ff8a-3f96-486e-93b3-a90858e1a13c.lovable.app-1778956484296.png" },
+      { title: "CultureConnect — Culture events that actually move the needle" },
+      { name: "description", content: "CultureConnect is a B2B platform that helps companies book vetted local vendors for culture events and tracks employee morale over time." },
     ],
     links: [
-      {
-        rel: "stylesheet",
-        href: appCss,
-      },
+      { rel: "stylesheet", href: appCss },
     ],
   }),
   shellComponent: RootShell,
