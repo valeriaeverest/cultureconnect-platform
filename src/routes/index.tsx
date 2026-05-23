@@ -520,6 +520,21 @@ function LandingPage() {
             <p className="mx-auto max-w-2xl text-base sm:text-lg text-secondary leading-relaxed mb-6">
               Stop wasting budget on uninspiring corporate events. Lattice pairs smart data with local creators to build high-yield experiences that measurably increase team productivity, foster genuine workplace connection, and drive top-talent retention.
             </p>
+            <div className="flex flex-wrap justify-center gap-3 mb-6">
+              <Link
+                to="/impact"
+                className="inline-flex items-center justify-center h-12 px-7 rounded-md font-medium text-white transition-colors"
+                style={{ backgroundColor: "var(--color-primary)" }}
+              >
+                View Demo →
+              </Link>
+              <Link
+                to="/intake"
+                className="inline-flex items-center justify-center h-12 px-7 rounded-md font-medium text-foreground border border-border bg-white hover:bg-muted transition-colors"
+              >
+                Try the intake flow
+              </Link>
+            </div>
             <HeroGallery />
             <h1 className="text-5xl sm:text-6xl font-semibold tracking-[-0.02em] text-foreground max-w-3xl mx-auto">
               Match. Book. Measure.
