@@ -48,29 +48,9 @@ const MATCHES: Record<number, Match> = {
   },
 };
 
+import { DemoNav } from "@/components/demo-nav";
 function Nav() {
-  return (
-    <header className="border-b bg-white">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <BrandMark />
-        <nav className="flex items-center gap-8 text-sm text-secondary">
-          <Link to="/signin" search={{ tab: "customer" }} className="hover:text-foreground">
-            Sign in
-          </Link>
-          <Link to="/signin" search={{ tab: "artist" }} className="hover:text-foreground">
-            For artists
-          </Link>
-          <Link
-            to="/signin"
-            search={{ tab: "customer" }}
-            className="rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground hover:bg-primary-hover"
-          >
-            Get started
-          </Link>
-        </nav>
-      </div>
-    </header>
-  );
+  return <DemoNav />;
 }
 
 type VenueChoice = "office" | "suggest" | "other";
