@@ -293,7 +293,7 @@ function IntakePage() {
 
   const submit = () => {
     saveIntake(intake);
-    navigate({ to: "/matches" });
+    navigate({ to: "/impact" });
   };
 
   return (
