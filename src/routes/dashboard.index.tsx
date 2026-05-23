@@ -1,7 +1,5 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useSyncExternalStore } from "react";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { Navbar } from "../components/navbar";
-import { authStore } from "../lib/auth-store";
 import { mockEvents, cultureScoreData, npsData, vendors } from "../lib/data";
 import {
   LineChart,
@@ -12,73 +10,50 @@ import {
   Tooltip,
   ResponsiveContainer,
 } from "recharts";
-import { Calendar, TrendingUp, Users, Star } from "lucide-react";
+import { Calendar, TrendingUp, Users, Star, Sparkles, HeartHandshake, DollarSign } from "lucide-react";
 
 export const Route = createFileRoute("/dashboard/")({
   component: DashboardPage,
 });
 
 function DashboardPage() {
-  const user = useSyncExternalStore(authStore.subscribe, authStore.getUser);
-  const navigate = useNavigate();
-
-  if (!user) {
-    return (
-      <div className="min-h-screen bg-cream">
-        <Navbar />
-        <main className="pt-24 pb-20 px-4 text-center">
-          <h1 className="text-3xl font-serif text-ink mb-4">Access Required</h1>
-          <p className="text-warm-gray font-sans mb-6">
-            Please sign in to view your dashboard.
-          </p>
-          <Link
-            to="/login"
-            className="inline-flex items-center justify-center rounded-full bg-terracotta px-6 py-2.5 text-sm font-medium text-white hover:bg-[#A8401F]"
-          >
-            Sign in
-          </Link>
-        </main>
-      </div>
-    );
-  }
-
   const upcomingEvents = mockEvents.filter((e) => e.status === "upcoming");
   const pastEvents = mockEvents.filter((e) => e.status === "completed");
-
-  // Recommended vendors based on past event categories
-  const pastCategories = pastEvents
-    .map((e) => vendors.find((v) => v.id === e.vendor_id)?.category)
-    .filter(Boolean);
-  const recommended = vendors
-    .filter((v) => pastCategories.includes(v.category) && !pastEvents.some((e) => e.vendor_id === v.id))
-    .slice(0, 3);
+  const recommended = vendors.slice(0, 3);
 
   return (
     <div className="min-h-screen bg-cream">
       <Navbar />
       <main className="pt-24 pb-20 px-4 max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-full bg-green-50 border border-green-200 px-3 py-1 text-xs font-medium text-green-700">
+          <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+          Live Demo · Acme Corp · Q4 2026
+        </div>
+        <div className="flex items-center justify-between mb-8 flex-wrap gap-4">
           <div>
-            <h1 className="text-4xl font-serif text-ink">Dashboard</h1>
+            <h1 className="text-4xl font-serif text-ink">Culture Impact Dashboard</h1>
             <p className="text-warm-gray font-sans mt-1">
-              Welcome back, {user.company_name}
+              Real-time view of how culture spend drives retention and engagement.
             </p>
           </div>
-          <Link
-            to="/dashboard/analytics"
-            className="hidden sm:inline-flex items-center justify-center rounded-full border border-border bg-card px-5 py-2 text-sm font-medium text-ink font-sans hover:bg-muted transition-colors"
-          >
-            View Analytics →
-          </Link>
         </div>
 
-        {/* Stats Cards */}
+        {/* Hero KPIs */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+          <HeroKpi icon={<HeartHandshake className="w-5 h-5" />} label="Employee Engagement" value="87%" delta="+12 pts QoQ" tone="terracotta" />
+          <HeroKpi icon={<TrendingUp className="w-5 h-5" />} label="Retention Lift" value="+14%" delta="vs control cohort" tone="green" />
+          <HeroKpi icon={<DollarSign className="w-5 h-5" />} label="Annual Savings" value="$842K" delta="reduced turnover" tone="ink" />
+          <HeroKpi icon={<Sparkles className="w-5 h-5" />} label="Culture NPS" value="68" delta="+22 YoY" tone="terracotta" />
+        </div>
+
+        {/* Secondary stats */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           <StatCard icon={<Calendar className="w-5 h-5" />} label="Upcoming Events" value={upcomingEvents.length.toString()} />
-          <StatCard icon={<Users className="w-5 h-5" />} label="Events This Year" value={mockEvents.length.toString()} />
-          <StatCard icon={<TrendingUp className="w-5 h-5" />} label="Culture Score" value="75" />
-          <StatCard icon={<Star className="w-5 h-5" />} label="Avg NPS" value="68" />
+          <StatCard icon={<Users className="w-5 h-5" />} label="Employees Reached" value="1,284" />
+          <StatCard icon={<TrendingUp className="w-5 h-5" />} label="Local Economy Impact" value="$214K" />
+          <StatCard icon={<Star className="w-5 h-5" />} label="Vendors Activated" value="37" />
         </div>
+
 
         {/* Charts */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-10">
