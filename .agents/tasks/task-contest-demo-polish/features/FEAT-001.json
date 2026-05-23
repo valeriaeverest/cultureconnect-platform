@@ -1,0 +1,26 @@
+{
+  "id": "FEAT-001",
+  "type": "feat",
+  "description": "Simplify intake form to mock success, populate dashboard with B2B ROI mock data, lock down navigation to only Landing/Intake/Dashboard, and polish landing page copy for contest demo",
+  "status": "completed",
+  "steps": [
+    "STEP 1 - SIMPLIFY INTAKE TO MOCK STATE: In src/routes/index.tsx, replace the handleSubmit function in IntakeFormSection. Instead of the multi-step loading animation and vendor matching logic, the form should: (a) call authStore.login() to auto-authenticate the user with company_name 'Acme Corp', (b) immediately navigate to /dashboard using TanStack Router's useNavigate(). Remove or hide the results section and the loading animation since the user will never see them. Keep the form fields visually intact so it looks professional during the demo.",
+    "STEP 2 - POPULATE DASHBOARD WITH B2B ROI DATA: In src/lib/data.ts, update cultureScoreData and npsData arrays with higher, more impressive values showing clear upward trends. Add new exported data: (a) budgetAllocationData array for a pie/bar chart showing budget by category (Live Music: $45K, Local Food: $32K, Wellness: $18K, Team Building: $28K, Art & Crafts: $12K). (b) engagementMetrics object with: eventEngagement '87%', teamConnectionScore '+34%', employeeRetention '94%', roiMultiplier '3.2x'. Then in src/routes/dashboard.index.tsx: replace the static StatCard values with the new engagementMetrics data (Employee Event Engagement: 87%, Team Connection Score: +34%, Employee Retention Rate: 94%, ROI Multiplier: 3.2x). Add a third chart card showing 'Cultural Vendor Budget Allocation' using a BarChart from Recharts with budgetAllocationData. Update mockEvents with more realistic corporate data if needed. Remove the 'Recommended Vendors' section at the bottom to keep the dashboard focused on metrics.",
+    "STEP 3 - LOCK DOWN NAVIGATION: In src/components/navbar.tsx: (a) Remove the 'Vendors' link entirely. (b) Remove the 'Analytics' link. (c) Remove the 'Sign in' and 'Get matched' links for unauthenticated users - since the intake form auto-authenticates, the user will always appear logged in after submitting the form. (d) Keep only: CultureConnect logo (links to /), Dashboard link (visible when logged in), and Sign out button. (e) Remove or hide any profile dropdowns or settings buttons if present.",
+    "STEP 4 - POLISH LANDING COPY: In src/routes/index.tsx HeroSection: Change the h1 to something like 'Transform corporate event spend into employee retention.' and the subtitle to clearly position as B2B: 'CultureConnect helps enterprises convert culture budgets into measurable team connectivity, engagement, and retention outcomes.' Update the TrustBar stats to more impressive B2B figures: '2,400+' companies served, '87%' employee engagement lift, '3.2x' average ROI. Update the IntakeFormSection heading to 'See your team impact in 60 seconds' and subtitle to 'Enter your event parameters and watch the ROI projection instantly.' Change the form submit button text to 'Show My ROI Dashboard'."
+  ],
+  "acceptance_criteria": [
+    "Submitting the intake form on the landing page immediately auto-authenticates and navigates to /dashboard with no loading states or intermediate screens",
+    "The dashboard shows 4 stat cards with B2B ROI metrics: Employee Event Engagement 87%, Team Connection Score +34%, Employee Retention Rate 94%, ROI Multiplier 3.2x",
+    "The dashboard has 3 chart sections: Culture Score Over Time, Team NPS Trend, and Cultural Vendor Budget Allocation",
+    "The navbar only shows: CultureConnect brand link, Dashboard link (when authenticated), and Sign out button - no Vendors, Analytics, Sign in, or Get matched links",
+    "The landing page hero clearly positions the product as B2B for transforming corporate event spend into employee retention",
+    "The project builds successfully with 'bun run build'"
+  ],
+  "verification": [
+    "Run 'bun install' to ensure dependencies are installed",
+    "Run 'bun run build' to confirm TypeScript compiles and Vite bundles without errors"
+  ],
+  "blocked_reason": null,
+  "findings": "Build passes cleanly. All 4 steps implemented in one commit. The useNavigate import was already available from @tanstack/react-router. BarChart and Bar were already available from recharts (no new dependencies needed)."
+}
