@@ -210,3 +210,36 @@ function EventRow({ event }: { event: typeof mockEvents[0] }) {
     </div>
   );
 }
+
+function HeroKpi({
+  icon,
+  label,
+  value,
+  delta,
+  tone,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: string;
+  delta: string;
+  tone: "terracotta" | "green" | "ink";
+}) {
+  const toneClasses =
+    tone === "terracotta"
+      ? "from-terracotta to-[#A8401F] text-white"
+      : tone === "green"
+      ? "from-emerald-500 to-emerald-700 text-white"
+      : "from-ink to-[#3a342c] text-white";
+
+  return (
+    <div className={`bg-gradient-to-br ${toneClasses} rounded-xl p-5 shadow-lg`}>
+      <div className="flex items-center justify-between mb-3 opacity-90">
+        {icon}
+        <span className="text-[10px] uppercase tracking-wider opacity-80">{delta}</span>
+      </div>
+      <div className="text-4xl font-serif">{value}</div>
+      <div className="text-xs font-sans mt-1 opacity-90">{label}</div>
+    </div>
+  );
+}
+
