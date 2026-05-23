@@ -1,0 +1,7 @@
+{
+  "task_id": "task-contest-demo-polish",
+  "task_description": "Trim and polish the CultureConnect MVP prototype for a 4-hour contest deadline. Simplify intake to mock state, populate dashboard with B2B ROI data, lock navigation to essential paths only, and polish landing copy.",
+  "status": "in_progress",
+  "feature_order": ["FEAT-001"],
+  "blocked_reason": null
+}

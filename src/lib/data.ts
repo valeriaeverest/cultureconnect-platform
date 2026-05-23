@@ -335,20 +335,37 @@ export const mockPulseSurveys: PulseSurvey[] = [
 ];
 
 export const cultureScoreData = [
-  { month: "Jan", score: 58 },
-  { month: "Feb", score: 62 },
-  { month: "Mar", score: 68 },
-  { month: "Apr", score: 72 },
-  { month: "May", score: 75 },
+  { month: "Jan", score: 64 },
+  { month: "Feb", score: 71 },
+  { month: "Mar", score: 78 },
+  { month: "Apr", score: 84 },
+  { month: "May", score: 89 },
+  { month: "Jun", score: 92 },
 ];
 
 export const npsData = [
-  { month: "Jan", nps: 45 },
-  { month: "Feb", nps: 52 },
-  { month: "Mar", nps: 58 },
-  { month: "Apr", nps: 65 },
-  { month: "May", nps: 68 },
+  { month: "Jan", nps: 52 },
+  { month: "Feb", nps: 61 },
+  { month: "Mar", nps: 68 },
+  { month: "Apr", nps: 74 },
+  { month: "May", nps: 79 },
+  { month: "Jun", nps: 84 },
 ];
+
+export const budgetAllocationData = [
+  { category: "Live Music", amount: 45000 },
+  { category: "Local Food", amount: 32000 },
+  { category: "Wellness", amount: 18000 },
+  { category: "Team Building", amount: 28000 },
+  { category: "Art & Crafts", amount: 12000 },
+];
+
+export const engagementMetrics = {
+  eventEngagement: "87%",
+  teamConnectionScore: "+34%",
+  employeeRetention: "94%",
+  roiMultiplier: "3.2x",
+};
 
 export const cities = [
   "Austin TX",

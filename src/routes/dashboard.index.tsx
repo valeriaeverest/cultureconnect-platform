@@ -2,10 +2,18 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useSyncExternalStore } from "react";
 import { Navbar } from "../components/navbar";
 import { authStore } from "../lib/auth-store";
-import { mockEvents, cultureScoreData, npsData, vendors } from "../lib/data";
+import {
+  mockEvents,
+  cultureScoreData,
+  npsData,
+  budgetAllocationData,
+  engagementMetrics,
+} from "../lib/data";
 import {
   LineChart,
   Line,
+  BarChart,
+  Bar,
   XAxis,
   YAxis,
   CartesianGrid,
@@ -45,39 +53,39 @@ function DashboardPage() {
   const upcomingEvents = mockEvents.filter((e) => e.status === "upcoming");
   const pastEvents = mockEvents.filter((e) => e.status === "completed");
 
-  // Recommended vendors based on past event categories
-  const pastCategories = pastEvents
-    .map((e) => vendors.find((v) => v.id === e.vendor_id)?.category)
-    .filter(Boolean);
-  const recommended = vendors
-    .filter((v) => pastCategories.includes(v.category) && !pastEvents.some((e) => e.vendor_id === v.id))
-    .slice(0, 3);
-
   return (
     <div className="min-h-screen bg-cream">
       <Navbar />
       <main className="pt-24 pb-20 px-4 max-w-7xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <div>
-            <h1 className="text-4xl font-serif text-ink">Dashboard</h1>
-            <p className="text-warm-gray font-sans mt-1">
-              Welcome back, {user.company_name}
-            </p>
-          </div>
-          <Link
-            to="/dashboard/analytics"
-            className="hidden sm:inline-flex items-center justify-center rounded-full border border-border bg-card px-5 py-2 text-sm font-medium text-ink font-sans hover:bg-muted transition-colors"
-          >
-            View Analytics →
-          </Link>
+        <div className="mb-8">
+          <h1 className="text-4xl font-serif text-ink">Dashboard</h1>
+          <p className="text-warm-gray font-sans mt-1">
+            Welcome back, {user.company_name}
+          </p>
         </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
-          <StatCard icon={<Calendar className="w-5 h-5" />} label="Upcoming Events" value={upcomingEvents.length.toString()} />
-          <StatCard icon={<Users className="w-5 h-5" />} label="Events This Year" value={mockEvents.length.toString()} />
-          <StatCard icon={<TrendingUp className="w-5 h-5" />} label="Culture Score" value="75" />
-          <StatCard icon={<Star className="w-5 h-5" />} label="Avg NPS" value="68" />
+          <StatCard
+            icon={<Users className="w-5 h-5" />}
+            label="Employee Event Engagement"
+            value={engagementMetrics.eventEngagement}
+          />
+          <StatCard
+            icon={<TrendingUp className="w-5 h-5" />}
+            label="Team Connection Score"
+            value={engagementMetrics.teamConnectionScore}
+          />
+          <StatCard
+            icon={<Calendar className="w-5 h-5" />}
+            label="Employee Retention Rate"
+            value={engagementMetrics.employeeRetention}
+          />
+          <StatCard
+            icon={<Star className="w-5 h-5" />}
+            label="ROI Multiplier"
+            value={engagementMetrics.roiMultiplier}
+          />
         </div>
 
         {/* Charts */}
@@ -135,6 +143,33 @@ function DashboardPage() {
           </div>
         </div>
 
+        {/* Budget Allocation Chart */}
+        <div className="bg-card border border-border rounded-xl p-6 mb-10">
+          <h3 className="font-sans font-semibold text-ink mb-4">
+            Cultural Vendor Budget Allocation
+          </h3>
+          <ResponsiveContainer width="100%" height={260}>
+            <BarChart data={budgetAllocationData}>
+              <CartesianGrid strokeDasharray="3 3" stroke="#D6CFC4" />
+              <XAxis dataKey="category" tick={{ fontSize: 12, fill: "#8B8178" }} />
+              <YAxis
+                tick={{ fontSize: 12, fill: "#8B8178" }}
+                tickFormatter={(value) => `$${(value / 1000).toFixed(0)}K`}
+              />
+              <Tooltip
+                contentStyle={{
+                  backgroundColor: "#FFFFFF",
+                  border: "1px solid #D6CFC4",
+                  borderRadius: "8px",
+                  fontSize: "12px",
+                }}
+                formatter={(value: number) => [`$${value.toLocaleString()}`, "Budget"]}
+              />
+              <Bar dataKey="amount" fill="#C8502A" radius={[4, 4, 0, 0]} />
+            </BarChart>
+          </ResponsiveContainer>
+        </div>
+
         {/* Upcoming Events */}
         <div className="mb-10">
           <h2 className="text-2xl font-serif text-ink mb-4">Upcoming Events</h2>
@@ -158,31 +193,6 @@ function DashboardPage() {
             ))}
           </div>
         </div>
-
-        {/* Recommended Vendors */}
-        {recommended.length > 0 && (
-          <div>
-            <h2 className="text-2xl font-serif text-ink mb-4">Recommended for You</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-              {recommended.map((vendor) => (
-                <Link
-                  key={vendor.id}
-                  to="/vendors/$vendorId"
-                  params={{ vendorId: vendor.id }}
-                  className="bg-card border border-border rounded-xl p-4 hover:border-terracotta/30 transition-colors"
-                >
-                  <h4 className="font-sans font-semibold text-ink text-sm">{vendor.name}</h4>
-                  <span className="inline-block text-xs text-warm-gray bg-muted px-2 py-0.5 rounded-full mt-1 mb-2">
-                    {vendor.category}
-                  </span>
-                  <p className="text-xs text-warm-gray font-sans line-clamp-2">
-                    {vendor.description}
-                  </p>
-                </Link>
-              ))}
-            </div>
-          </div>
-        )}
       </main>
     </div>
   );
