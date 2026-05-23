@@ -1,9 +1,10 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { useState, useCallback } from "react";
 import { Navbar } from "../components/navbar";
 import { vendors, cities, teamSizes, timeSlots, vibeTags } from "../lib/data";
 import type { Vendor } from "../lib/data";
 import { Star, Check, MapPin, DollarSign, Clock } from "lucide-react";
+
 
 export const Route = createFileRoute("/")({
   component: LandingPage,
