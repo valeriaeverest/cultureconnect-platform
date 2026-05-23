@@ -609,8 +609,30 @@ function ImpactPage() {
           </div>
         </section>
 
-        {/* Metrics */}
+        {/* Success banner + live pipeline */}
+        <section className="mt-8 space-y-4">
+          <SuccessBanner />
+          <PipelineStrip />
+        </section>
+
+        {/* Business ROI row */}
+        <section className="mt-10">
+          <div className="mb-4 flex items-end justify-between">
+            <h2 className="text-lg font-semibold text-foreground">Business impact, this quarter</h2>
+            <span className="text-xs font-medium text-secondary">
+              Updated live · synced with HRIS
+            </span>
+          </div>
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+            {ROI_METRICS.map((m) => (
+              <RoiCard key={m.title} m={m} />
+            ))}
+          </div>
+        </section>
+
+        {/* Engagement metrics */}
         <section className="mt-12">
+          <h2 className="mb-4 text-lg font-semibold text-foreground">Engagement signals from this event</h2>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {METRICS.map((m) => (
               <MetricCard key={m.title} m={m} />
